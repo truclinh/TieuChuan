@@ -21,6 +21,9 @@
         width: 95%;
         margin: auto;
     }
+        div#khung {
+        margin-top:3%;
+    }
 </style>
 <script type="text/javascript">
     function OnGridFocusedRowChanged(s, e) {
@@ -42,7 +45,7 @@
         var x = document.getElementsByName("txt_ghichu").toString();
         alert(x);
         @*//form.action = '@Url.Action("QuanLyNguoiDungPartialDelete", "QuanLyNguoiDung",new {id=  })';*@
-       // form.submit();
+        // form.submit();
     }
 
     function fncXoa() {
@@ -51,188 +54,190 @@
     }
 </script>
 @*@Html.TextBoxFor(m => m.id, new { @class = "form-control" })*@
-<div class="cs">
-    @using (Html.BeginForm("Submit", "Home", FormMethod.Post, new { id = "form" }))
+@*<div class="cs">*@
+@*@using (Html.BeginForm("Submit", "Home", FormMethod.Post, new { id = "form" }))
+    {*@
+@*<h2 style="text-align:center;color:red;"><b>QUẢN LÝ NGƯỜI DÙNG</b></h2>*@
+@* //--------------------------------------*@
+@*@Html.DevExpress().FormLayout(settings =>
     {
-        <h2 style="text-align:center;color:red;"><b>QUẢN LÝ NGƯỜI DÙNG</b></h2>
-        @* //--------------------------------------*@
-        @Html.DevExpress().FormLayout(settings =>
-{
-    settings.Name = "formLayout";
-    settings.EncodeHtml = false;
-    settings.UseDefaultPaddings = false;
-    settings.Width = Unit.Percentage(100);
+        settings.Name = "formLayout";
+        settings.EncodeHtml = false;
+        settings.UseDefaultPaddings = false;
+        settings.Width = Unit.Percentage(100);
 
-    var groupItem = settings.Items.AddGroupItem(i =>
-    {
-        i.Width = Unit.Percentage(90);
-        i.Caption = "Thông tin người dùng";
-        i.SettingsItemHelpTexts.Position = HelpTextPosition.Bottom;
-        i.ColCount = 2;
-    });
-    groupItem.Items.Add(i =>
-    {
-        i.FieldName = "txt_ma_nsd";
-        i.Caption = "Mã NSD";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-    });
-    groupItem.Items.Add(i =>
-    {
-        i.FieldName = "txt_ten_nsd";
-        i.Caption = "Tên NSD";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-    });
-    groupItem.Items.Add(i =>
-    {
-        i.FieldName = "txt_matkhau";
-        i.Caption = "Mật khẩu";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        var tbSettings = (TextBoxSettings)i.NestedExtensionSettings;
-        tbSettings.Properties.Password = true;
-    });
-    groupItem.Items.Add(i =>
-    {
-        i.FieldName = "txt_makhoa";
-        i.Caption = "Khoa";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.ComboBox; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        ComboBoxSettings cb = (ComboBoxSettings)i.NestedExtensionSettings;
-        cb.Width = Unit.Percentage(100);
-        cb.Properties.DataSource = ViewBag.DMKhoa;
-        cb.Properties.TextField = "TenKhoa";
-        cb.Properties.ValueField = "MaKhoa";
-        cb.Properties.ValueType = typeof(string);
-    });
-    groupItem.Items.Add(i =>
-    {
-        i.FieldName = "txt_mabomon";
-        i.Caption = "Bộ môn";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.ComboBox; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        ComboBoxSettings cb = (ComboBoxSettings)i.NestedExtensionSettings;
-        cb.Width = Unit.Percentage(100);
-        cb.Properties.DataSource = ViewBag.DMBoMon;
-        cb.Properties.TextField = "TenBM";
-        cb.Properties.ValueField = "MaBM";
-        cb.Properties.ValueType = typeof(string);
-    });
-    groupItem.Items.Add(i =>
-    {
-        i.FieldName = "txt_ma_nhom";
-        i.Caption = "Mã nhóm";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-    });
-    groupItem.Items.Add(i =>
-    {
-        i.FieldName = "txt_ghichu";
-        i.Caption = "Ghi chú";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-    });
-    //-------------------------------------- Button
-    var groupItem1 = settings.Items.AddGroupItem(i =>
-    {
-        i.Caption = "";
-        i.SettingsItemHelpTexts.Position = HelpTextPosition.Bottom;
-        i.ColCount = 6;
-    });
-    groupItem1.Items.Add(i =>
-    {
-        i.FieldName = "btnThem";
-        i.Caption = "";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
-        btnSettings.Name = "btnThem";
-        btnSettings.Text = "Thêm";
-        // btnSettings.Images.Image.Url = Url.Content("~/Content/Images/VTAccounting/help.png");
-        btnSettings.ImagePosition = ImagePosition.Left;
-        btnSettings.Images.Image.IconID = IconID.ActionsAdd16x16office2013;
-        btnSettings.UseSubmitBehavior = false;
-        btnSettings.ClientSideEvents.Click = "fncThem";
-       // btnSettings.RouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartialAddNew" };
-    });
-    groupItem1.Items.Add(i =>
-    {
-        i.FieldName = "btnXoa";
-        i.Caption = "";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
-        btnSettings.Name = "btnXoa";
-        btnSettings.Text = "Xóa";
-        btnSettings.ImagePosition = ImagePosition.Left;
-        btnSettings.Images.Image.IconID = IconID.ActionsDelete16x16office2013;
-        btnSettings.UseSubmitBehavior = false;
-        btnSettings.ClientSideEvents.Click = "fncXoa";
-        //btnSettigns.UseSubmitBehavior = true;
-        //s.RouteValues = new { Controller = "ContactPage", Action = "Update" };
-    });
-    groupItem1.Items.Add(i =>
-    {
-        i.FieldName = "btnSua";
-        i.Caption = "";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
-        btnSettings.Name = "btnSua";
-        btnSettings.Text = "Sửa";
-        btnSettings.ImagePosition = ImagePosition.Left;
-        btnSettings.Images.Image.IconID = IconID.ActionsEdit16x16devav;
-        //btnSettigns.UseSubmitBehavior = true;
-        //s.RouteValues = new { Controller = "ContactPage", Action = "Update" };
-    });
-    groupItem1.Items.Add(i =>
-    {
-        i.FieldName = "btnLuu";
-        i.Caption = "";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
-        btnSettings.Name = "btnLuu";
-        btnSettings.Text = "Lưu";
-        btnSettings.ImagePosition = ImagePosition.Left;
-        btnSettings.Images.Image.IconID = IconID.ActionsSave16x16devav;
-        //btnSettigns.UseSubmitBehavior = true;
-        //s.RouteValues = new { Controller = "ContactPage", Action = "Update" };
-    });
-    groupItem1.Items.Add(i =>
-    {
-        i.FieldName = "btnCapNhat";
-        i.Caption = "";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
-        btnSettings.Name = "btnCapNhat";
-        btnSettings.Text = "Cập nhật";
-        btnSettings.ImagePosition = ImagePosition.Left;
-        btnSettings.Images.Image.IconID = IconID.ActionsReset16x16office2013;
-        //btnSettigns.UseSubmitBehavior = true;
-        //s.RouteValues = new { Controller = "ContactPage", Action = "Update" };
-    });
-    groupItem1.Items.Add(i =>
-    {
-        i.FieldName = "btnHuy";
-        i.Caption = "";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
-        btnSettings.Name = "btnHuy";
-        btnSettings.Text = "Hủy";
-        btnSettings.ImagePosition = ImagePosition.Left;
-        btnSettings.Images.Image.IconID = IconID.ActionsCancel16x16office2013;
-        //btnSettigns.UseSubmitBehavior = true;
-        //s.RouteValues = new { Controller = "ContactPage", Action = "Update" };
-    });
-}).GetHtml()
-    }
-    @*//--------------------------------------*@
+        var groupItem = settings.Items.AddGroupItem(i =>
+        {
+            i.Width = Unit.Percentage(90);
+            i.Caption = "Thông tin người dùng";
+            i.SettingsItemHelpTexts.Position = HelpTextPosition.Bottom;
+            i.ColCount = 2;
+        });
+        groupItem.Items.Add(i =>
+        {
+            i.FieldName = "txt_ma_nsd";
+            i.Caption = "Mã NSD";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+        });
+        groupItem.Items.Add(i =>
+        {
+            i.FieldName = "txt_ten_nsd";
+            i.Caption = "Tên NSD";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+        });
+        groupItem.Items.Add(i =>
+        {
+            i.FieldName = "txt_matkhau";
+            i.Caption = "Mật khẩu";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            var tbSettings = (TextBoxSettings)i.NestedExtensionSettings;
+            tbSettings.Properties.Password = true;
+        });
+        groupItem.Items.Add(i =>
+        {
+            i.FieldName = "txt_makhoa";
+            i.Caption = "Khoa";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.ComboBox; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            ComboBoxSettings cb = (ComboBoxSettings)i.NestedExtensionSettings;
+            cb.Width = Unit.Percentage(100);
+            cb.Properties.DataSource = ViewBag.DMKhoa;
+            cb.Properties.TextField = "TenKhoa";
+            cb.Properties.ValueField = "MaKhoa";
+            cb.Properties.ValueType = typeof(string);
+        });
+        groupItem.Items.Add(i =>
+        {
+            i.FieldName = "txt_mabomon";
+            i.Caption = "Bộ môn";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.ComboBox; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            ComboBoxSettings cb = (ComboBoxSettings)i.NestedExtensionSettings;
+            cb.Width = Unit.Percentage(100);
+            cb.Properties.DataSource = ViewBag.DMBoMon;
+            cb.Properties.TextField = "TenBM";
+            cb.Properties.ValueField = "MaBM";
+            cb.Properties.ValueType = typeof(string);
+        });
+        groupItem.Items.Add(i =>
+        {
+            i.FieldName = "txt_ma_nhom";
+            i.Caption = "Mã nhóm";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+        });
+        groupItem.Items.Add(i =>
+        {
+            i.FieldName = "txt_ghichu";
+            i.Caption = "Ghi chú";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+        });
+        //-------------------------------------- Button
+        var groupItem1 = settings.Items.AddGroupItem(i =>
+        {
+            i.Caption = "";
+            i.SettingsItemHelpTexts.Position = HelpTextPosition.Bottom;
+            i.ColCount = 6;
+        });
+        groupItem1.Items.Add(i =>
+        {
+            i.FieldName = "btnThem";
+            i.Caption = "";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
+            btnSettings.Name = "btnThem";
+            btnSettings.Text = "Thêm";
+            // btnSettings.Images.Image.Url = Url.Content("~/Content/Images/VTAccounting/help.png");
+            btnSettings.ImagePosition = ImagePosition.Left;
+            btnSettings.Images.Image.IconID = IconID.ActionsAdd16x16office2013;
+            btnSettings.UseSubmitBehavior = false;
+            btnSettings.ClientSideEvents.Click = "fncThem";
+           // btnSettings.RouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartialAddNew" };
+        });
+        groupItem1.Items.Add(i =>
+        {
+            i.FieldName = "btnXoa";
+            i.Caption = "";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
+            btnSettings.Name = "btnXoa";
+            btnSettings.Text = "Xóa";
+            btnSettings.ImagePosition = ImagePosition.Left;
+            btnSettings.Images.Image.IconID = IconID.ActionsDelete16x16office2013;
+            btnSettings.UseSubmitBehavior = false;
+            btnSettings.ClientSideEvents.Click = "fncXoa";
+            //btnSettigns.UseSubmitBehavior = true;
+            //s.RouteValues = new { Controller = "ContactPage", Action = "Update" };
+        });
+        groupItem1.Items.Add(i =>
+        {
+            i.FieldName = "btnSua";
+            i.Caption = "";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
+            btnSettings.Name = "btnSua";
+            btnSettings.Text = "Sửa";
+            btnSettings.ImagePosition = ImagePosition.Left;
+            btnSettings.Images.Image.IconID = IconID.ActionsEdit16x16devav;
+            //btnSettigns.UseSubmitBehavior = true;
+            //s.RouteValues = new { Controller = "ContactPage", Action = "Update" };
+        });
+        groupItem1.Items.Add(i =>
+        {
+            i.FieldName = "btnLuu";
+            i.Caption = "";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
+            btnSettings.Name = "btnLuu";
+            btnSettings.Text = "Lưu";
+            btnSettings.ImagePosition = ImagePosition.Left;
+            btnSettings.Images.Image.IconID = IconID.ActionsSave16x16devav;
+            //btnSettigns.UseSubmitBehavior = true;
+            //s.RouteValues = new { Controller = "ContactPage", Action = "Update" };
+        });
+        groupItem1.Items.Add(i =>
+        {
+            i.FieldName = "btnCapNhat";
+            i.Caption = "";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
+            btnSettings.Name = "btnCapNhat";
+            btnSettings.Text = "Cập nhật";
+            btnSettings.ImagePosition = ImagePosition.Left;
+            btnSettings.Images.Image.IconID = IconID.ActionsReset16x16office2013;
+            //btnSettigns.UseSubmitBehavior = true;
+            //s.RouteValues = new { Controller = "ContactPage", Action = "Update" };
+        });
+        groupItem1.Items.Add(i =>
+        {
+            i.FieldName = "btnHuy";
+            i.Caption = "";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
+            btnSettings.Name = "btnHuy";
+            btnSettings.Text = "Hủy";
+            btnSettings.ImagePosition = ImagePosition.Left;
+            btnSettings.Images.Image.IconID = IconID.ActionsCancel16x16office2013;
+            //btnSettigns.UseSubmitBehavior = true;
+            //s.RouteValues = new { Controller = "ContactPage", Action = "Update" };
+        });
+    }).GetHtml()*@
+@*  }*@
+@*//--------------------------------------*@
+@*</div>*@
+<div id="khung">
+    @Html.Action("QuanLyNguoiDungPartial")
 </div>
-@Html.Action("QuanLyNguoiDungPartial")
 
 
 

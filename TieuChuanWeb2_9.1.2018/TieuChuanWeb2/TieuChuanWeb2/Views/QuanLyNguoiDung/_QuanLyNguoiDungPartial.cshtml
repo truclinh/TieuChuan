@@ -12,6 +12,7 @@
         settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartialDelete" };
         settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
         settings.SettingsBehavior.ConfirmDelete = true;
+        //settings.Width = Unit.Percentage(100);
 
         //settings.Settings.ShowGroupPanel = true;
         settings.SettingsBehavior.AllowFocusedRow = true;
@@ -30,6 +31,10 @@
         //settings.Settings.ShowGroupPanel = true;
         settings.Settings.ShowFilterRow = true;
         settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsCommandButton.NewButton.Text = "Thêm";
+        settings.SettingsCommandButton.EditButton.Text = "Sửa";
+        settings.SettingsCommandButton.DeleteButton.Text = "Xóa";
 
         settings.SettingsCommandButton.UpdateButton.RenderMode = DevExpress.Web.GridCommandButtonRenderMode.Button;
         settings.SettingsCommandButton.UpdateButton.Text = "Cập nhật";
@@ -108,6 +113,21 @@
             column.FieldName = "ghichu";
             column.Caption = "Ghi chú";
         });
+        settings.SettingsPager.PageSize = 10;
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.FirstPageButton.Text = "Trang đầu";
+        settings.SettingsPager.LastPageButton.Visible = true;
+
+        settings.SettingsPager.LastPageButton.Text = "Trang cuối";
+        settings.SettingsPager.Summary.Text = " Trang {0}/{1} (Tổng số người dùng: {2})";
+        settings.PreRender = (s, e) =>
+        {
+            var sender = s as MVCxGridView;
+            // Set the zero-based index of the initially displayed page 
+            sender.PageIndex = 0;
+        };
+
+        // settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
     });
     if (ViewData["EditError"] != null)
     {

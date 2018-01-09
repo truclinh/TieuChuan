@@ -10,6 +10,7 @@ namespace TieuChuanWeb2.Controllers
     public class ThongTinKhoaController : Controller
     {
         // GET: ThongTinKhoa
+        QL_TieuChuan2Entities db = new QL_TieuChuan2Entities();
         public ActionResult Index()
         {
             return View();
@@ -18,19 +19,21 @@ namespace TieuChuanWeb2.Controllers
         [ValidateInput(false)]
         public ActionResult ThongTinKhoaPartial()
         {
-            var model = new object[0];
-            return PartialView("_ThongTinKhoaPartial", model);
+            var model = db.dm_khoa;
+            return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n=>n.id).ToList());
         }
 
         [HttpPost, ValidateInput(false)]
         public ActionResult ThongTinKhoaPartialAddNew(TieuChuanWeb2.Models.dm_khoa item)
         {
-            var model = new object[0];
+            var model = db.dm_khoa;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // Insert here a code to insert the new item in your model
+                    item.id = Guid.NewGuid();
+                    model.Add(item);
+                    db.SaveChanges();
                 }
                 catch (Exception e)
                 {
@@ -39,17 +42,22 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_ThongTinKhoaPartial", model);
+            return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n => n.id).ToList());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult ThongTinKhoaPartialUpdate(TieuChuanWeb2.Models.dm_khoa item)
         {
-            var model = new object[0];
+            var model = db.dm_khoa;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // Insert here a code to update the item in your model
+                    var modelItem = model.FirstOrDefault(it => it.id == item.id);
+                    if (modelItem != null)
+                    {
+                        UpdateModel(modelItem);
+                        db.SaveChanges();
+                    }
                 }
                 catch (Exception e)
                 {
@@ -58,24 +66,27 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_ThongTinKhoaPartial", model);
+            return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n => n.id).ToList());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult ThongTinKhoaPartialDelete(System.Guid id)
         {
-            var model = new object[0];
+            var model = db.dm_khoa;
             if (id != null)
             {
                 try
                 {
-                    // Insert here a code to delete the item from your model
+                    var item = model.FirstOrDefault(it => it.id == id);
+                    if (item != null)
+                        model.Remove(item);
+                    db.SaveChanges();
                 }
                 catch (Exception e)
                 {
                     ViewData["EditError"] = e.Message;
                 }
             }
-            return PartialView("_ThongTinKhoaPartial", model);
+            return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n => n.id).ToList());
         }
     }
 }

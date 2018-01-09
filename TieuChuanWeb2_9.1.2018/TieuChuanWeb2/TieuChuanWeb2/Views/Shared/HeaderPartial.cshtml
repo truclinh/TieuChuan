@@ -53,6 +53,7 @@
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/bomon.ico");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "ThongTinBoMon");
     });
     var tasksGroupPhanQuyen = tabHeThong.Groups.Add("Phân quyền");
     tasksGroupPhanQuyen.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
@@ -62,6 +63,7 @@
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/user.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "PhanQuyen");
     });
 
     //-------------------------------------- tab TIÊU CHUẨN
@@ -75,6 +77,7 @@
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/danhmuc.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "DanhMucTieuChuan");
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
@@ -83,6 +86,7 @@
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/danhmuc.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "DanhMucTieuChi");
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
@@ -91,6 +95,7 @@
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/Works-in-progress-icon.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "QuanLyDuLieu");
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
@@ -99,6 +104,7 @@
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/nhaplieu.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "NhapThongTinChiTiet");
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
@@ -107,6 +113,7 @@
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/report.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "XemChiTietTieuChuan");
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
@@ -115,6 +122,7 @@
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/report.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "DanhSachMucLuc");
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
@@ -123,6 +131,7 @@
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/report.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "MCBoSungLan1");
     });
     //-------------------------------------- tab TRỢ GIÚP
     var tabTroGiup = settings.Tabs.Add("TRỢ GIÚP");
@@ -135,6 +144,7 @@
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/help.png");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "HuongDanSuDung");
     });
 }).GetHtml()
 <script>

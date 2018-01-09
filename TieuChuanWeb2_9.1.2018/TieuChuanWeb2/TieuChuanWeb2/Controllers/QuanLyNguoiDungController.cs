@@ -34,7 +34,7 @@ namespace TieuChuanWeb2.Controllers
             ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
             ViewBag.DMBoMon = lstBoMon.Select(i => new { TenBM = i.tenbomon, MaBM = i.mabomon });
             var model = db1.ht_dm_nsd;
-            return PartialView("_QuanLyNguoiDungPartial", model.ToList());
+            return PartialView("_QuanLyNguoiDungPartial", model.OrderByDescending(n => n.ngaytao).ToList());
         }
 
         [HttpPost, ValidateInput(false)]
@@ -67,7 +67,7 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_QuanLyNguoiDungPartial", model.ToList());
+            return PartialView("_QuanLyNguoiDungPartial", model.OrderByDescending(n => n.ngaytao).ToList());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult QuanLyNguoiDungPartialUpdate(TieuChuanWeb2.Models.ht_dm_nsd item)
@@ -102,7 +102,7 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_QuanLyNguoiDungPartial", model.ToList());
+            return PartialView("_QuanLyNguoiDungPartial", model.OrderByDescending(n => n.ngaytao).ToList());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult QuanLyNguoiDungPartialDelete(System.Guid id)
@@ -130,7 +130,7 @@ namespace TieuChuanWeb2.Controllers
                     ViewData["EditError"] = e.Message;
                 }
             }
-            return PartialView("_QuanLyNguoiDungPartial", model.ToList());
+            return PartialView("_QuanLyNguoiDungPartial", model.OrderByDescending(n => n.ngaytao).ToList());
         }
     }
 }
