@@ -12,6 +12,7 @@ namespace TieuChuanWeb2.Models
         public List<dm_khoa> lstKhoa { get; set; }
         public List<dm_bomon> lstBoMon { get; set; }
         public List<dm_bomon> lstBoMonTheoKhoa { get; set; }
+        public string tenkhoa { get; set; }
 
         //-------------------------------------- Function
         public List<ht_dm_nsd> getAllNSD()
@@ -57,6 +58,12 @@ namespace TieuChuanWeb2.Models
 
             }
             return lstBoMonTheoKhoa.ToList();
+        }
+        public string getTenKhoa(string makhoa)
+        {
+            var query = from k in db.dm_khoa where k.makhoa == makhoa select k.tenkhoa;
+            tenkhoa = query.ToString();
+            return tenkhoa ;
         }
 
         //-------------------------------------- End Function

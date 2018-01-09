@@ -254,6 +254,8 @@
     <Content Include="Views\QuanLyNguoiDung\_QuanLyNguoiDungPartial.cshtml" />
     <Content Include="Views\ThongTinKhoa\Index.cshtml" />
     <Content Include="Views\ThongTinKhoa\_ThongTinKhoaPartial.cshtml" />
+    <Content Include="Views\ThongTinBoMon\Index.cshtml" />
+    <Content Include="Views\ThongTinBoMon\_ThongTinBoMonPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -268,6 +270,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuanLyNguoiDungController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Controllers\ThongTinBoMonController.cs" />
     <Compile Include="Controllers\ThongTinKhoaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Thông tin bộ môn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    table#ThongTinBoMon {
+        width: 95%;
+        margin: auto;
+    }
+        div#khung {
+          margin-top:1%;
+    }
+</style>
+<div id="khung">
+    @Html.Action("ThongTinBoMonPartial")
+</div>
+
+

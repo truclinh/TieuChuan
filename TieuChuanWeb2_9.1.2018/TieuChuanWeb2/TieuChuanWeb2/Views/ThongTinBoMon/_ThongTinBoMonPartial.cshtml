@@ -1,11 +1,11 @@
 ﻿@{
     var grid = Html.DevExpress().GridView(settings => {
-        settings.Name = "ThongTinKhoa";
-        settings.CallbackRouteValues = new { Controller = "ThongTinKhoa", Action = "ThongTinKhoaPartial" };
+        settings.Name = "ThongTinBoMon";
+        settings.CallbackRouteValues = new { Controller = "ThongTinBoMon", Action = "ThongTinBoMonPartial" };
 
-        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "ThongTinKhoa", Action = "ThongTinKhoaPartialAddNew" };
-        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "ThongTinKhoa", Action = "ThongTinKhoaPartialUpdate" };
-        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "ThongTinKhoa", Action = "ThongTinKhoaPartialDelete" };
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "ThongTinBoMon", Action = "ThongTinBoMonPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "ThongTinBoMon", Action = "ThongTinBoMonPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "ThongTinBoMon", Action = "ThongTinBoMonPartialDelete" };
         settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
         settings.SettingsBehavior.ConfirmDelete = true;
 
@@ -25,16 +25,16 @@
         settings.Styles.CommandColumn.Font.Size = System.Web.UI.WebControls.FontUnit.Large;
         settings.Styles.CommandColumn.Spacing = System.Web.UI.WebControls.Unit.Pixel(5);
 
-        settings.SettingsBehavior.AllowFocusedRow = true;
-        settings.Styles.FocusedRow.ForeColor = System.Drawing.Color.Red;
-
         settings.KeyFieldName = "id";
-        settings.Width = Unit.Percentage(50);
+        settings.Width = Unit.Percentage(70);
 
         settings.SettingsPager.Visible = true;
         settings.Settings.ShowGroupPanel = false;
         settings.Settings.ShowFilterRow = true;
         settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.Styles.FocusedRow.ForeColor = System.Drawing.Color.Red;
 
         settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
         settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
@@ -53,7 +53,7 @@
         settings.SettingsPager.LastPageButton.Visible = true;
 
         settings.SettingsPager.LastPageButton.Text = "Trang cuối";
-        settings.SettingsPager.Summary.Text = " Trang {0}/{1} (Tổng số khoa: {2})";
+        settings.SettingsPager.Summary.Text = " Trang {0}/{1} (Tổng số bộ môn: {2})";
         settings.PreRender = (s, e) =>
         {
             var sender = s as MVCxGridView;
@@ -61,20 +61,38 @@
             sender.PageIndex = 0;
         };
 
-        // settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
 
+        //settings.Columns.Add("mabomon");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "mabomon";
+            column.Caption = "Mã bộ môn";
+        });
+        //settings.Columns.Add("tenbomon");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "tenbomon";
+            column.Caption = "Tên bộ môn";
+        });
         //settings.Columns.Add("makhoa");
         settings.Columns.Add(column =>
         {
             column.FieldName = "makhoa";
-            column.Caption = "Mã khoa";
-        });
+            column.Caption = "Khoa";
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.EnableCallbackMode = true;
+            comboBoxProperties.DataSource = ViewBag.DMKhoa;
+            comboBoxProperties.TextField = "TenKhoa";
+            comboBoxProperties.ValueField = "MaKhoa";
+            comboBoxProperties.ValueType = typeof(string);
 
-        //settings.Columns.Add("tenkhoa");
+        });
+        //settings.Columns.Add("googledrive");
         settings.Columns.Add(column =>
         {
-            column.FieldName = "tenkhoa";
-            column.Caption = "Tên khoa";
+            column.FieldName = "googledrive";
+            column.Caption = "Google Drive";
         });
     });
     if (ViewData["EditError"] != null){
