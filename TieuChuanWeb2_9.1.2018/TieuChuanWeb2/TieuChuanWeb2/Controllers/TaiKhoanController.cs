@@ -116,7 +116,7 @@ namespace TieuChuanWeb2.Controllers
                         {
                             if (txtMatKhauMoi == txtXacNhanMK)
                             {
-                               // var mahoaPass = Encryptor.MDSHash(txtMatKhauMoi);
+                                // var mahoaPass = Encryptor.MDSHash(txtMatKhauMoi);
                                 //ad.matkhau = mahoaPass;
                                 db.Entry(ad).State = System.Data.Entity.EntityState.Modified;
                                 db.SaveChanges();
@@ -151,6 +151,5 @@ namespace TieuChuanWeb2.Controllers
             return RedirectToAction("DangNhap", "TaiKhoan");
         }
         //--------------------------------------End Đăng xuất
-
     }
 }

@@ -13,80 +13,100 @@ namespace TieuChuanWeb2.Controllers
         QL_TieuChuan2Entities db = new QL_TieuChuan2Entities();
         public ActionResult Index()
         {
-            return View();
+            if (Session["TaiKhoan"] != null)
+            {
+                return View();
+            }
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
 
         [ValidateInput(false)]
         public ActionResult ThongTinKhoaPartial()
         {
-            var model = db.dm_khoa;
-            return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n=>n.id).ToList());
+            if (Session["TaiKhoan"] != null)
+            {
+                var model = db.dm_khoa;
+                return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n => n.id).ToList());
+            }
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult ThongTinKhoaPartialAddNew(TieuChuanWeb2.Models.dm_khoa item)
+        public ActionResult ThongTinKhoaPartialAddNew(dm_khoa item)
         {
-            var model = db.dm_khoa;
-            if (ModelState.IsValid)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                var model = db.dm_khoa;
+                if (ModelState.IsValid)
                 {
-                    item.id = Guid.NewGuid();
-                    model.Add(item);
-                    db.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
-            }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n => n.id).ToList());
-        }
-        [HttpPost, ValidateInput(false)]
-        public ActionResult ThongTinKhoaPartialUpdate(TieuChuanWeb2.Models.dm_khoa item)
-        {
-            var model = db.dm_khoa;
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var modelItem = model.FirstOrDefault(it => it.id == item.id);
-                    if (modelItem != null)
+                    try
                     {
-                        UpdateModel(modelItem);
+                        item.id = Guid.NewGuid();
+                        model.Add(item);
                         db.SaveChanges();
                     }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n => n.id).ToList());
             }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n => n.id).ToList());
+            return RedirectToAction("DangNhap", "TaiKhoan");
+        }
+        [HttpPost, ValidateInput(false)]
+        public ActionResult ThongTinKhoaPartialUpdate(dm_khoa item)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                var model = db.dm_khoa;
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        var modelItem = model.FirstOrDefault(it => it.id == item.id);
+                        if (modelItem != null)
+                        {
+                            UpdateModel(modelItem);
+                            db.SaveChanges();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
+                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n => n.id).ToList());
+            }
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult ThongTinKhoaPartialDelete(System.Guid id)
         {
-            var model = db.dm_khoa;
-            if (id != null)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                var model = db.dm_khoa;
+                if (id != null)
                 {
-                    var item = model.FirstOrDefault(it => it.id == id);
-                    if (item != null)
-                        model.Remove(item);
-                    db.SaveChanges();
+                    try
+                    {
+                        var item = model.FirstOrDefault(it => it.id == id);
+                        if (item != null)
+                            model.Remove(item);
+                        db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n => n.id).ToList());
             }
-            return PartialView("_ThongTinKhoaPartial", model.OrderByDescending(n => n.id).ToList());
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
     }
 }

@@ -13,93 +13,113 @@ namespace TieuChuanWeb2.Controllers
         QL_TieuChuan2Entities db = new QL_TieuChuan2Entities();
         public ActionResult Index()
         {
-            return View();
+            if (Session["TaiKhoan"] != null)
+            {
+                return View();
+            }
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
 
         [ValidateInput(false)]
         public ActionResult ThongTinBoMonPartial()
         {
-            TieuChuanDTO tc = new TieuChuanDTO();
-            var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
-            ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
+            if (Session["TaiKhoan"] != null)
+            {
+                TieuChuanDTO tc = new TieuChuanDTO();
+                var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
+                ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
 
-            var model = db.dm_bomon;
-            return PartialView("_ThongTinBoMonPartial", model.ToList());
+                var model = db.dm_bomon;
+                return PartialView("_ThongTinBoMonPartial", model.ToList());
+            }
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
 
         [HttpPost, ValidateInput(false)]
         public ActionResult ThongTinBoMonPartialAddNew(TieuChuanWeb2.Models.dm_bomon item)
         {
-            var model = db.dm_bomon;
-            TieuChuanDTO tc = new TieuChuanDTO();
-            var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
-            ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
-            if (ModelState.IsValid)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                var model = db.dm_bomon;
+                TieuChuanDTO tc = new TieuChuanDTO();
+                var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
+                ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
+                if (ModelState.IsValid)
                 {
-                    item.id = Guid.NewGuid();
-                    model.Add(item);
-                    db.SaveChanges();
+                    try
+                    {
+                        item.id = Guid.NewGuid();
+                        model.Add(item);
+                        db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return PartialView("_ThongTinBoMonPartial", model.ToList());
             }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_ThongTinBoMonPartial", model.ToList());
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult ThongTinBoMonPartialUpdate(TieuChuanWeb2.Models.dm_bomon item)
         {
-            var model = db.dm_bomon ;
-            TieuChuanDTO tc = new TieuChuanDTO();
-            var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
-            ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
-            if (ModelState.IsValid)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                var model = db.dm_bomon;
+                TieuChuanDTO tc = new TieuChuanDTO();
+                var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
+                ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
+                if (ModelState.IsValid)
                 {
-                    var modelItem = model.FirstOrDefault(it => it.id == item.id);
-                    if (modelItem != null)
+                    try
                     {
-                        UpdateModel(modelItem);
-                        db.SaveChanges();
+                        var modelItem = model.FirstOrDefault(it => it.id == item.id);
+                        if (modelItem != null)
+                        {
+                            UpdateModel(modelItem);
+                            db.SaveChanges();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
                     }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                else
+                    ViewData["EditError"] = "Please, correct all errors.";
+                return PartialView("_ThongTinBoMonPartial", model.ToList());
             }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_ThongTinBoMonPartial", model.ToList());
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult ThongTinBoMonPartialDelete(System.Guid id)
         {
-            var model = db.dm_bomon;
-            TieuChuanDTO tc = new TieuChuanDTO();
-            var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
-            ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
-            if (id != null)
+            if (Session["TaiKhoan"] != null)
             {
-                try
+                var model = db.dm_bomon;
+                TieuChuanDTO tc = new TieuChuanDTO();
+                var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
+                ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
+                if (id != null)
                 {
-                    var item = model.FirstOrDefault(it => it.id == id);
-                    if (item != null)
-                        model.Remove(item);
-                    db.SaveChanges();
+                    try
+                    {
+                        var item = model.FirstOrDefault(it => it.id == id);
+                        if (item != null)
+                            model.Remove(item);
+                        db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        ViewData["EditError"] = e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
+                return PartialView("_ThongTinBoMonPartial", model.ToList());
             }
-            return PartialView("_ThongTinBoMonPartial", model.ToList());
+            return RedirectToAction("DangNhap", "TaiKhoan");
         }
     }
 }
