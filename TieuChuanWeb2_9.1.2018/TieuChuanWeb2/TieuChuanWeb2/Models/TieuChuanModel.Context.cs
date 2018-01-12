@@ -642,5 +642,23 @@ namespace TieuChuanWeb2.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("th_TongHopChiPhiTheoBoPhan", tempTableParameter, tuNgayParameter, denNgayParameter);
         }
+    
+        public virtual ObjectResult<spDanhMucPhanQuyen_Result> spDanhMucPhanQuyen(string ma_nsd)
+        {
+            var ma_nsdParameter = ma_nsd != null ?
+                new ObjectParameter("ma_nsd", ma_nsd) :
+                new ObjectParameter("ma_nsd", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spDanhMucPhanQuyen_Result>("spDanhMucPhanQuyen", ma_nsdParameter);
+        }
+    
+        public virtual ObjectResult<spPhanQuyenNguoiDung_Result> spPhanQuyenNguoiDung(string ma_nsd)
+        {
+            var ma_nsdParameter = ma_nsd != null ?
+                new ObjectParameter("ma_nsd", ma_nsd) :
+                new ObjectParameter("ma_nsd", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spPhanQuyenNguoiDung_Result>("spPhanQuyenNguoiDung", ma_nsdParameter);
+        }
     }
 }

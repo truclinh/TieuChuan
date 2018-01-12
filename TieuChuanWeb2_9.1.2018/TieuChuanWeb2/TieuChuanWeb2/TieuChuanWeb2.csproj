@@ -44,6 +44,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Web.ASPxRichEdit.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -256,6 +257,12 @@
     <Content Include="Views\ThongTinKhoa\_ThongTinKhoaPartial.cshtml" />
     <Content Include="Views\ThongTinBoMon\Index.cshtml" />
     <Content Include="Views\ThongTinBoMon\_ThongTinBoMonPartial.cshtml" />
+    <Content Include="Views\PhanQuyen\Index.cshtml" />
+    <Content Include="Views\PhanQuyen\_DanhMucPhanQuyenPartial.cshtml" />
+    <Content Include="Views\PhanQuyen\_PhanQuyenNguoiDungPartial.cshtml" />
+    <Content Include="Views\DanhMucTieuChuan\Index.cshtml" />
+    <Content Include="Views\DanhMucTieuChuan\_DanhMucTieuChuanPartial.cshtml" />
+    <Content Include="Views\DanhMucTieuChuan\_NoiDungPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -267,7 +274,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DanhMucTieuChuanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PhanQuyenController.cs" />
     <Compile Include="Controllers\QuanLyNguoiDungController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\ThongTinBoMonController.cs" />
@@ -321,7 +330,13 @@
     <Compile Include="Models\LayBangTheoCot_Result.cs">
       <DependentUpon>TieuChuanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\spDanhMucPhanQuyen_Result.cs">
+      <DependentUpon>TieuChuanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Split_Result.cs">
+      <DependentUpon>TieuChuanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spPhanQuyenNguoiDung_Result.cs">
       <DependentUpon>TieuChuanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">

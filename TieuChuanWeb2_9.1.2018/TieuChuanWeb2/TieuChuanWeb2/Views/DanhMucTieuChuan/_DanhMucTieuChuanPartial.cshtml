@@ -1,0 +1,52 @@
+﻿@{
+    var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "DanhMucTieuChuan";
+        settings.CallbackRouteValues = new { Controller = "DanhMucTieuChuan", Action = "DanhMucTieuChuanPartial" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "DanhMucTieuChuan", Action = "DanhMucTieuChuanPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "DanhMucTieuChuan", Action = "DanhMucTieuChuanPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "DanhMucTieuChuan", Action = "DanhMucTieuChuanPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.Settings.ShowPreview = true;
+        settings.PreviewFieldName = "noidung";
+        settings.PreviewEncodeHtml = true;
+       // settings.SetEditFormTemplateContent
+
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+        settings.KeyFieldName = "id";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = false;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.Columns.Add("ma_tieuchuan");
+        settings.Columns.Add("ten_tieuchuan");
+        //settings.Columns.Add("noidung");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "noidung";
+            column.Caption = "Nội dung";
+            column.ShowInCustomizationForm = true;
+            // column.ColumnType
+
+        });
+    });
+    if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

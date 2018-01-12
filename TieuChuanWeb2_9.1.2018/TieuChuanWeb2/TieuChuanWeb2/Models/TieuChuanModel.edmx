@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QL_TieuChuan2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QL_TieuChuan2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6013: The table/view 'QL_TieuChuan2.dbo.bang1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="bang1">
@@ -783,6 +783,9 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
           <Parameter Name="denngay" Type="datetime" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spDanhMucPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma_nsd" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="String" Type="varchar" Mode="In" />
           <Parameter Name="Delimiter" Type="char" Mode="In" />
@@ -793,6 +796,9 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="spPhanQuyenNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma_nsd" Type="varchar" Mode="In" />
         </Function>
         <Function Name="tc_SoQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="matk" Type="nvarchar" Mode="In" />
@@ -852,8 +858,7 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
           <EntitySet Name="ht_nsd_menu" EntityType="Self.ht_nsd_menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_TieuChuan2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1098,10 +1103,10 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
             <Parameter Name="tableTemp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetAllData">
-            <Parameter Name="month" Mode="In" Type="DateTime" />
+          <Parameter Name="month" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="hd_PhuLuc">
-            <Parameter Name="soid" Mode="In" Type="Guid" />
+          <Parameter Name="soid" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1150,11 +1155,11 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
           </FunctionImport>
           <FunctionImport Name="sp_DanhSachCanBoCongChucVienChucNLD" />
           <FunctionImport Name="sp_DanhSachLuongPhuCapNhanVien">
-            <Parameter Name="luongcoban" Mode="In" Type="Decimal" />
+          <Parameter Name="luongcoban" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_DanhSachNghiemThuTongHop" />
           <FunctionImport Name="sp_DanhSachNhanVienDiNuocNgoai">
-            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+          <Parameter Name="denngay" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_DanhSachNhanVienKhenThuong">
             <Parameter Name="tungay" Mode="In" Type="DateTime" />
@@ -1235,6 +1240,12 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
             <Parameter Name="tuNgay" Mode="In" Type="DateTime" />
             <Parameter Name="denNgay" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="spDanhMucPhanQuyen" ReturnType="Collection(QL_TieuChuan2Model.spDanhMucPhanQuyen_Result)">
+            <Parameter Name="ma_nsd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spPhanQuyenNguoiDung" ReturnType="Collection(QL_TieuChuan2Model.spPhanQuyenNguoiDung_Result)">
+            <Parameter Name="ma_nsd" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1246,6 +1257,16 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spDanhMucPhanQuyen_Result">
+          <Property Type="String" Name="ma_nhom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ma_menu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ten_menu" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="spPhanQuyenNguoiDung_Result">
+          <Property Type="String" Name="ma_nhom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ma_menu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ten_menu" Nullable="true" MaxLength="128" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1517,6 +1538,24 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
           <FunctionImportMapping FunctionImportName="th_CanDoiPhatSinh" FunctionName="QL_TieuChuan2Model.Store.th_CanDoiPhatSinh" />
           <FunctionImportMapping FunctionImportName="th_SoChiTiet" FunctionName="QL_TieuChuan2Model.Store.th_SoChiTiet" />
           <FunctionImportMapping FunctionImportName="th_TongHopChiPhiTheoBoPhan" FunctionName="QL_TieuChuan2Model.Store.th_TongHopChiPhiTheoBoPhan" />
+          <FunctionImportMapping FunctionImportName="spDanhMucPhanQuyen" FunctionName="QL_TieuChuan2Model.Store.spDanhMucPhanQuyen">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_TieuChuan2Model.spDanhMucPhanQuyen_Result">
+                <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
+                <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
+                <ScalarProperty Name="ten_menu" ColumnName="ten_menu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spPhanQuyenNguoiDung" FunctionName="QL_TieuChuan2Model.Store.spPhanQuyenNguoiDung">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_TieuChuan2Model.spPhanQuyenNguoiDung_Result">
+                <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
+                <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
+                <ScalarProperty Name="ten_menu" ColumnName="ten_menu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

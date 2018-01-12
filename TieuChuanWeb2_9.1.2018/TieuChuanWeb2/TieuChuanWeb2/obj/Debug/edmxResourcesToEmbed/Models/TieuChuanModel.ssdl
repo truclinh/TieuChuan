@@ -778,6 +778,9 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
     <Parameter Name="denngay" Type="datetime" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spDanhMucPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_nsd" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="String" Type="varchar" Mode="In" />
     <Parameter Name="Delimiter" Type="char" Mode="In" />
@@ -788,6 +791,9 @@ warning 6013: The table/view 'QL_TieuChuan2.dbo.ketqua' does not have a primary 
         </RowType>
       </CollectionType>
     </ReturnType>
+  </Function>
+  <Function Name="spPhanQuyenNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_nsd" Type="varchar" Mode="In" />
   </Function>
   <Function Name="tc_SoQuy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="matk" Type="nvarchar" Mode="In" />

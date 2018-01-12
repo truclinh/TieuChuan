@@ -265,5 +265,23 @@
     <FunctionImportMapping FunctionImportName="th_CanDoiPhatSinh" FunctionName="QL_TieuChuan2Model.Store.th_CanDoiPhatSinh" />
     <FunctionImportMapping FunctionImportName="th_SoChiTiet" FunctionName="QL_TieuChuan2Model.Store.th_SoChiTiet" />
     <FunctionImportMapping FunctionImportName="th_TongHopChiPhiTheoBoPhan" FunctionName="QL_TieuChuan2Model.Store.th_TongHopChiPhiTheoBoPhan" />
+    <FunctionImportMapping FunctionImportName="spDanhMucPhanQuyen" FunctionName="QL_TieuChuan2Model.Store.spDanhMucPhanQuyen">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QL_TieuChuan2Model.spDanhMucPhanQuyen_Result">
+          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
+          <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
+          <ScalarProperty Name="ten_menu" ColumnName="ten_menu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spPhanQuyenNguoiDung" FunctionName="QL_TieuChuan2Model.Store.spPhanQuyenNguoiDung">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QL_TieuChuan2Model.spPhanQuyenNguoiDung_Result">
+          <ScalarProperty Name="ma_nhom" ColumnName="ma_nhom" />
+          <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
+          <ScalarProperty Name="ten_menu" ColumnName="ten_menu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

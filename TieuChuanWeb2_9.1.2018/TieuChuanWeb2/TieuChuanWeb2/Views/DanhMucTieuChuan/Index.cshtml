@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Danh mục tiêu chuẩn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit }
+    )
+@Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.RichEdit }
+    )
+
+
+@*Html.Action("DanhMucTieuChuanPartial")*@
+
+
+@using (Html.BeginForm())
+{
+    @Html.Action("NoiDungPartial")
+}
+
+
+
+
+
+

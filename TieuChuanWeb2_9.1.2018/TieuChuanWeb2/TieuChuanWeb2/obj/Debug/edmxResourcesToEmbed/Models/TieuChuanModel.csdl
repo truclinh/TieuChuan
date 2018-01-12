@@ -378,6 +378,12 @@
       <Parameter Name="tuNgay" Mode="In" Type="DateTime" />
       <Parameter Name="denNgay" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="spDanhMucPhanQuyen" ReturnType="Collection(QL_TieuChuan2Model.spDanhMucPhanQuyen_Result)">
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spPhanQuyenNguoiDung" ReturnType="Collection(QL_TieuChuan2Model.spPhanQuyenNguoiDung_Result)">
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -389,5 +395,15 @@
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spDanhMucPhanQuyen_Result">
+    <Property Type="String" Name="ma_nhom" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ma_menu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ten_menu" Nullable="true" MaxLength="128" />
+  </ComplexType>
+  <ComplexType Name="spPhanQuyenNguoiDung_Result">
+    <Property Type="String" Name="ma_nhom" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ma_menu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ten_menu" Nullable="true" MaxLength="128" />
   </ComplexType>
 </Schema>

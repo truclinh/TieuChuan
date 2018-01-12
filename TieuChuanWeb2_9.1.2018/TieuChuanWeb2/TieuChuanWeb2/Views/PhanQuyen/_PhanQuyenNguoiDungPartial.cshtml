@@ -1,0 +1,39 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "PhanQuyenNguoiDung";
+        settings.CallbackRouteValues = new { Controller = "PhanQuyen", Action = "PhanQuyenNguoiDungPartial" };
+
+				settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "PhanQuyen", Action = "PhanQuyenNguoiDungPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "PhanQuyen", Action = "PhanQuyenNguoiDungPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "PhanQuyen", Action = "PhanQuyenNguoiDungPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "id";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = false;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+		settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+		settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+		settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+		settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+		settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+				settings.Columns.Add("ma_nsd");
+				settings.Columns.Add("ma_menu");
+				settings.Columns.Add("ten_menu");
+				settings.Columns.Add("ma_nhom");
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

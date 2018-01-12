@@ -23,5 +23,6 @@ namespace TieuChuanWeb2.Models
         public string nguoisua { get; set; }
         public Nullable<System.DateTime> ngaysua { get; set; }
         public string noidung { get; set; }
+        public byte[] noidungbyte { get; set; }
     }
 }
