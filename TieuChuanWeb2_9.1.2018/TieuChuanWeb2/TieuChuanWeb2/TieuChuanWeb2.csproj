@@ -263,6 +263,8 @@
     <Content Include="Views\DanhMucTieuChuan\Index.cshtml" />
     <Content Include="Views\DanhMucTieuChuan\_DanhMucTieuChuanPartial.cshtml" />
     <Content Include="Views\DanhMucTieuChuan\_NoiDungPartial.cshtml" />
+    <Content Include="Views\DanhMucTieuChuan\ChinhSua.cshtml" />
+    <Content Include="Views\Shared\_LayoutWord.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

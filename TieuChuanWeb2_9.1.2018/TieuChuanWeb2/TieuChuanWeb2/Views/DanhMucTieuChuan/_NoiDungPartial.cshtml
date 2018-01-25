@@ -1,9 +1,12 @@
-
-@Html.DevExpress().RichEdit(settings => {
+@model TieuChuanWeb2.Models.dm_tieuchuan
+  <center>
+    @Html.DevExpress().RichEdit(settings =>
+{
     settings.Name = "NoiDung";
     settings.CallbackRouteValues = new { Controller = "DanhMucTieuChuan", Action = "NoiDungPartial" };
-    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
-    settings.Height = 500;
+    settings.Width = Unit.Percentage(100);
+    settings.Height = 645;
     settings.ReadOnly = false;
     settings.RibbonMode = RichEditRibbonMode.Ribbon;
-}).Open(Model.id,DevExpress.XtraRichEdit.DocumentFormat.Rtf, () => { return Model.noidungbyte; }).GetHtml()
+}).Open("document", DevExpress.XtraRichEdit.DocumentFormat.Html, () => { return Model.noidungbyte; }).GetHtml()
+</center>

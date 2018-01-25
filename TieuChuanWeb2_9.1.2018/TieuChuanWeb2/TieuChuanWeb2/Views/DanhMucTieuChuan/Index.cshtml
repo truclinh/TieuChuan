@@ -1,23 +1,39 @@
-﻿
+﻿@using TieuChuanWeb2.Models;
+@model IEnumerable<dm_tieuchuan>
 @{
     ViewBag.Title = "Danh mục tiêu chuẩn";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit }
-    )
-@Html.DevExpress().GetScripts(
-        new Script { ExtensionSuite = ExtensionSuite.RichEdit }
-    )
 
-
-@*Html.Action("DanhMucTieuChuanPartial")*@
-
-
-@using (Html.BeginForm())
+<script type="text/javascript">
+    function OnGridFocusedRowChanged(s, e) {
+        s.GetRowValues(s.GetFocusedRowIndex(), 'id;ma_tieuchuan;ten_tieuchuan', OnGetRowValues);
+        //alert("jhjh");
+    }
+    function OnGetRowValues(values) {
+        DetailNotes.SetText(values[0]);
+        //txt_ghichu.SetText(values[6]);
+    }
+    function clickk() {
+        var x = document.getElementById("DetailNotes_I").value;
+        window.open('@Url.Action("ChinhSua","DanhMucTieuChuan")', "_blank", "toolbar=yes,top=100,left=100,width=1000,height=700");
+            //'Url.Action("ChinhSua","DanhMucTieuChuan", { new id= x } )';
+       // alert(x);
+    }
+</script>
+@Html.DevExpress().TextBox(settings =>
 {
-    @Html.Action("NoiDungPartial")
-}
+    settings.Name = "DetailNotes";
+    settings.ReadOnly = true;
+}).GetHtml()
+@Html.DevExpress().Button(settings =>
+{
+    settings.Name = "btnSua";
+    settings.Text = "Edit";
+    settings.ClientSideEvents.Click = "clickk";
+}).GetHtml()
+@Html.Action("DanhMucTieuChuanPartial")
+
 
 
 

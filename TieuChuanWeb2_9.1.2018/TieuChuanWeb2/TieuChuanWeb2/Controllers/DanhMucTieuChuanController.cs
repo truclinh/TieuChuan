@@ -14,115 +14,124 @@ namespace TieuChuanWeb2.Controllers
         QL_TieuChuan2Entities db = new QL_TieuChuan2Entities();
         public ActionResult Index()
         {
-            if (Session["TaiKhoan"] != null)
-            {
-                return View();
-            }
-            return RedirectToAction("DangNhap", "TaiKhoan");
+            //if (Session["TaiKhoan"] != null)
+            //{
+            return View();
+            //}
+            //return RedirectToAction("DangNhap", "TaiKhoan");
         }
-
+        public ActionResult ChinhSua()
+        {
+            //if (Session["TaiKhoan"] != null)
+            //{
+           // var da = db.dm_tieuchuan.SingleOrDefault(n => n.id == id);
+            return View();
+            //}
+            //return RedirectToAction("DangNhap", "TaiKhoan");
+        }
         [ValidateInput(false)]
         public ActionResult DanhMucTieuChuanPartial()
         {
-            if (Session["TaiKhoan"] != null)
-            {
-                var model = db.dm_tieuchuan;
-                return PartialView("_DanhMucTieuChuanPartial", model.ToList());
-            }
-            return RedirectToAction("DangNhap", "TaiKhoan");
-            
+            //if (Session["TaiKhoan"] != null)
+            //{
+            var model = db.dm_tieuchuan;
+            return PartialView("_DanhMucTieuChuanPartial", model.ToList());
+            //}
+            //return RedirectToAction("DangNhap", "TaiKhoan");
+
         }
 
         [HttpPost, ValidateInput(false)]
         public ActionResult DanhMucTieuChuanPartialAddNew(TieuChuanWeb2.Models.dm_tieuchuan item)
         {
-            if (Session["TaiKhoan"] != null)
+            //if (Session["TaiKhoan"] != null)
+            //{
+            var model = db.dm_tieuchuan;
+            if (ModelState.IsValid)
             {
-                var model = db.dm_tieuchuan;
-                if (ModelState.IsValid)
+                try
                 {
-                    try
-                    {
-                        item.id = Guid.NewGuid();
-                        model.Add(item);
-                        db.SaveChanges();
-                    }
-                    catch (Exception e)
-                    {
-                        ViewData["EditError"] = e.Message;
-                    }
+                    item.id = Guid.NewGuid();
+                    model.Add(item);
+                    db.SaveChanges();
                 }
-                else
-                    ViewData["EditError"] = "Please, correct all errors.";
-                return PartialView("_DanhMucTieuChuanPartial", model.ToList());
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
             }
-            return RedirectToAction("DangNhap", "TaiKhoan");
-         
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            return PartialView("_DanhMucTieuChuanPartial", model.ToList());
+            //}
+            //return RedirectToAction("DangNhap", "TaiKhoan");
+
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult DanhMucTieuChuanPartialUpdate(TieuChuanWeb2.Models.dm_tieuchuan item)
         {
-            if (Session["TaiKhoan"] != null)
+            //if (Session["TaiKhoan"] != null)
+            //{
+            var model = db.dm_tieuchuan;
+            if (ModelState.IsValid)
             {
-                var model = db.dm_tieuchuan;
-                if (ModelState.IsValid)
+                try
                 {
-                    try
+                    var modelItem = model.FirstOrDefault(it => it.id == item.id);
+                    if (modelItem != null)
                     {
-                        var modelItem = model.FirstOrDefault(it => it.id == item.id);
-                        if (modelItem != null)
-                        {
-                            UpdateModel(modelItem);
-                            db.SaveChanges();
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        ViewData["EditError"] = e.Message;
+                        UpdateModel(modelItem);
+                        db.SaveChanges();
                     }
                 }
-                else
-                    ViewData["EditError"] = "Please, correct all errors.";
-                return PartialView("_DanhMucTieuChuanPartial", model.ToList());
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
             }
-            return RedirectToAction("DangNhap", "TaiKhoan");
-            
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            return PartialView("_DanhMucTieuChuanPartial", model.ToList());
+            //}
+            //return RedirectToAction("DangNhap", "TaiKhoan");
+
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult DanhMucTieuChuanPartialDelete(System.Guid id)
         {
-            if (Session["TaiKhoan"] != null)
+            //if (Session["TaiKhoan"] != null)
+            //{
+            var model = db.dm_tieuchuan;
+            if (id != null)
             {
-                var model = db.dm_tieuchuan;
-                if (id != null)
+                try
                 {
-                    try
-                    {
-                        var item = model.FirstOrDefault(it => it.id == id);
-                        if (item != null)
-                            model.Remove(item);
-                        db.SaveChanges();
-                    }
-                    catch (Exception e)
-                    {
-                        ViewData["EditError"] = e.Message;
-                    }
+                    var item = model.FirstOrDefault(it => it.id == id);
+                    if (item != null)
+                        model.Remove(item);
+                    db.SaveChanges();
                 }
-                return PartialView("_DanhMucTieuChuanPartial", model.ToList());
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
             }
-            return RedirectToAction("DangNhap", "TaiKhoan");
-            
+            return PartialView("_DanhMucTieuChuanPartial", model.ToList());
+            //}
+            //return RedirectToAction("DangNhap", "TaiKhoan");
+
         }
 
         public ActionResult NoiDungPartial()
         {
             var model = db.dm_tieuchuan;
             var x = model.SingleOrDefault(n => n.id == new Guid("D4EF2CE0-72DE-49CD-8BC7-158CBB8CEB3F"));
+            //var x = model.SingleOrDefault(n => n.id ==id);
             // byte[] docBytes = RichEditExtension.SaveCopy("RichEditName", DevExpress.XtraRichEdit.DocumentFormat.Rtf);
-            byte[] nd = Encoding.ASCII.GetBytes(x.noidung);
+            byte[] nd = Encoding.UTF8.GetBytes(x.noidung);
             //x.noidung = Encoding.ASCII.GetBytes(x.noidung);
             x.noidungbyte = nd;
-            return PartialView("_NoiDungPartial",x);
+            return PartialView("_NoiDungPartial", x);
         }
     }
 }
