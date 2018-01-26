@@ -150,6 +150,8 @@
     <Content Include="Content\Css\Styles.css" />
     <Content Include="Content\Images\nen - Copy.jpg" />
     <Content Include="Content\Images\nen.jpg" />
+    <Content Include="Content\Images\TieuChuan\notsave.png" />
+    <Content Include="Content\Images\TieuChuan\save.png" />
     <Content Include="Content\Images\VTAccounting\dangxuat.png" />
     <Content Include="Content\Images\VTAccounting\doimatkhau.png" />
     <Content Include="Content\Images\VTAccounting\help.png" />

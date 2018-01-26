@@ -11,25 +11,25 @@
         //alert("jhjh");
     }
     function OnGetRowValues(values) {
-        DetailNotes.SetText(values[0]);
+        txtHiddenId.SetText(values[0]);
         //txt_ghichu.SetText(values[6]);
     }
     function fncBtnSuaClick() {
-        var x = document.getElementById("DetailNotes_I").value;
+        var x = document.getElementById("txtHiddenId_I").value;
         var url = '@Url.Action("ChinhSua", "DanhMucTieuChuan")' + '?id=' + x;
-        window.open(url, "_blank", "toolbar=yes,top=100,left=100,width=1000,height=700");
+        window.open(url, "_blank", "toolbar=yes,top=10,left=150,right=150,width=1000,height=670");
         //'Url.Action("ChinhSua","DanhMucTieuChuan", { new id= x } )';
         // alert(x);
     }
 </script>
 <style>
-    #DetailNotes{
+    #txtHiddenId{
         display:none;
     }
 </style>
 @Html.DevExpress().TextBox(settings =>
 {
-    settings.Name = "DetailNotes";
+    settings.Name = "txtHiddenId";
     settings.ReadOnly = true;
    // settings.ClientVisible = false;
 }).GetHtml()
