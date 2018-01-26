@@ -20,7 +20,7 @@ namespace TieuChuanWeb2.Controllers
             //}
             //return RedirectToAction("DangNhap", "TaiKhoan");
         }
-        public ActionResult ChinhSua()
+        public ActionResult ChinhSua(System.Guid id)
         {
             //if (Session["TaiKhoan"] != null)
             //{
@@ -35,7 +35,7 @@ namespace TieuChuanWeb2.Controllers
             //if (Session["TaiKhoan"] != null)
             //{
             var model = db.dm_tieuchuan;
-            return PartialView("_DanhMucTieuChuanPartial", model.ToList());
+            return PartialView("_DanhMucTieuChuanPartial", model.OrderBy(n => n.ma_tieuchuan).ToList());
             //}
             //return RedirectToAction("DangNhap", "TaiKhoan");
 
@@ -62,7 +62,7 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_DanhMucTieuChuanPartial", model.ToList());
+            return PartialView("_DanhMucTieuChuanPartial", model.OrderBy(n => n.ma_tieuchuan).ToList());
             //}
             //return RedirectToAction("DangNhap", "TaiKhoan");
 
@@ -91,7 +91,7 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_DanhMucTieuChuanPartial", model.ToList());
+            return PartialView("_DanhMucTieuChuanPartial", model.OrderBy(n => n.ma_tieuchuan).ToList());
             //}
             //return RedirectToAction("DangNhap", "TaiKhoan");
 
@@ -116,17 +116,17 @@ namespace TieuChuanWeb2.Controllers
                     ViewData["EditError"] = e.Message;
                 }
             }
-            return PartialView("_DanhMucTieuChuanPartial", model.ToList());
+            return PartialView("_DanhMucTieuChuanPartial", model.OrderBy(n => n.ma_tieuchuan).ToList());
             //}
             //return RedirectToAction("DangNhap", "TaiKhoan");
 
         }
 
-        public ActionResult NoiDungPartial()
+        public ActionResult NoiDungPartial(System.Guid id)
         {
             var model = db.dm_tieuchuan;
-            var x = model.SingleOrDefault(n => n.id == new Guid("D4EF2CE0-72DE-49CD-8BC7-158CBB8CEB3F"));
-            //var x = model.SingleOrDefault(n => n.id ==id);
+            //var x = model.SingleOrDefault(n => n.id == new Guid("D4EF2CE0-72DE-49CD-8BC7-158CBB8CEB3F"));
+            var x = model.SingleOrDefault(n => n.id ==(System.Guid) id);
             // byte[] docBytes = RichEditExtension.SaveCopy("RichEditName", DevExpress.XtraRichEdit.DocumentFormat.Rtf);
             byte[] nd = Encoding.UTF8.GetBytes(x.noidung);
             //x.noidung = Encoding.ASCII.GetBytes(x.noidung);

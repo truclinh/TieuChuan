@@ -14,11 +14,12 @@
         DetailNotes.SetText(values[0]);
         //txt_ghichu.SetText(values[6]);
     }
-    function clickk() {
+    function fncBtnSuaClick() {
         var x = document.getElementById("DetailNotes_I").value;
-        window.open('@Url.Action("ChinhSua","DanhMucTieuChuan")', "_blank", "toolbar=yes,top=100,left=100,width=1000,height=700");
-            //'Url.Action("ChinhSua","DanhMucTieuChuan", { new id= x } )';
-       // alert(x);
+        var url = '@Url.Action("ChinhSua", "DanhMucTieuChuan")' + '?id=' + x;
+        window.open(url, "_blank", "toolbar=yes,top=100,left=100,width=1000,height=700");
+        //'Url.Action("ChinhSua","DanhMucTieuChuan", { new id= x } )';
+        // alert(x);
     }
 </script>
 @Html.DevExpress().TextBox(settings =>
@@ -26,13 +27,15 @@
     settings.Name = "DetailNotes";
     settings.ReadOnly = true;
 }).GetHtml()
+
+@Html.Action("DanhMucTieuChuanPartial")
+
 @Html.DevExpress().Button(settings =>
 {
     settings.Name = "btnSua";
-    settings.Text = "Edit";
-    settings.ClientSideEvents.Click = "clickk";
+    settings.Text = "Sửa";
+    settings.ClientSideEvents.Click = "fncBtnSuaClick";
 }).GetHtml()
-@Html.Action("DanhMucTieuChuanPartial")
 
 
 
