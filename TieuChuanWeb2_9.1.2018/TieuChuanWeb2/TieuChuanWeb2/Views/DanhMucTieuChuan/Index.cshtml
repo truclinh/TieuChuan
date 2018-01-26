@@ -4,7 +4,7 @@
     ViewBag.Title = "Danh mục tiêu chuẩn";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@*<p name="DetailNotes"></p>*@
 <script type="text/javascript">
     function OnGridFocusedRowChanged(s, e) {
         s.GetRowValues(s.GetFocusedRowIndex(), 'id;ma_tieuchuan;ten_tieuchuan', OnGetRowValues);
@@ -22,10 +22,16 @@
         // alert(x);
     }
 </script>
+<style>
+    #DetailNotes{
+        display:none;
+    }
+</style>
 @Html.DevExpress().TextBox(settings =>
 {
     settings.Name = "DetailNotes";
     settings.ReadOnly = true;
+   // settings.ClientVisible = false;
 }).GetHtml()
 
 @Html.Action("DanhMucTieuChuanPartial")

@@ -1,4 +1,4 @@
-@model TieuChuanWeb2.Models.dm_tieuchuan
+﻿@model TieuChuanWeb2.Models.dm_tieuchuan
   <center>
     @Html.DevExpress().RichEdit(settings =>
 {
@@ -8,5 +8,25 @@
     settings.Height = 645;
     settings.ReadOnly = false;
     settings.RibbonMode = RichEditRibbonMode.Ribbon;
-}).Open("document", DevExpress.XtraRichEdit.DocumentFormat.Html, () => { return Model.noidungbyte; }).GetHtml()
+    //settings.PreRender = (s, e) =>
+    //{
+    //    MVCxRichEdit richEdit = (MVCxRichEdit)s;
+    //    richEdit.Focus();
+    //   // richEdit.Save();
+    //};
+    settings.Init = (s, e) =>
+    {
+        var rich = s as MVCxRichEdit;
+        rich.CreateDefaultRibbonTabs(true);
+        rich.RibbonTabs[0].Visible = false;
+        rich.RibbonTabs[2].Visible = false;
+        rich.RibbonTabs[3].Visible = false;
+        rich.RibbonTabs[4].Visible = false;
+        rich.RibbonTabs[5].Visible = false;
+        rich.RibbonTabs[1].Text = "Thanh công cụ";
+        // rich.RibbonTabs.Find(c => c.Text.Contains("Merge")).Visible = false;
+        //rich.RibbonTabs.Find(c => c.Text.Contains("Merge")).Visible = false;
+
+    };
+}).Open("document"+Model.id, DevExpress.XtraRichEdit.DocumentFormat.Html, () => { return Model.noidungbyte; }).GetHtml()
 </center>
