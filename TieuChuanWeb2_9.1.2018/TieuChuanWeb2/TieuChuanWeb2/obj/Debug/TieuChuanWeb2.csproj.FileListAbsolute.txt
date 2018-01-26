@@ -366,3 +366,4 @@ E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\j
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\ru\DevExpress.Spreadsheet.v17.1.Core.resources.dll
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\obj\Debug\TieuChuanWeb2.dll
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\obj\Debug\TieuChuanWeb2.pdb
+E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\obj\Debug\TieuChuanWeb2.csprojResolveAssemblyReference.cache

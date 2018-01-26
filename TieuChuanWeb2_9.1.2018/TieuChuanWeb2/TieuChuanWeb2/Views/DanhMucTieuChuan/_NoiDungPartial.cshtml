@@ -5,15 +5,10 @@
     settings.Name = "NoiDung";
     settings.CallbackRouteValues = new { Controller = "DanhMucTieuChuan", Action = "NoiDungPartial" };
     settings.Width = Unit.Percentage(100);
-    settings.Height = 600;
+    settings.Height = 610;
     settings.ReadOnly = false;
-    settings.RibbonMode = RichEditRibbonMode.Ribbon;
-    //settings.PreRender = (s, e) =>
-    //{
-    //    MVCxRichEdit richEdit = (MVCxRichEdit)s;
-    //    richEdit.Focus();
-    //   // richEdit.Save();
-    //};
+    settings.RibbonMode = RichEditRibbonMode.OneLineRibbon;
+    settings.Settings.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
     settings.Init = (s, e) =>
     {
         var rich = s as MVCxRichEdit;
@@ -22,11 +17,7 @@
         rich.RibbonTabs[2].Visible = false;
         rich.RibbonTabs[3].Visible = false;
         rich.RibbonTabs[4].Visible = false;
-        rich.RibbonTabs[5].Visible = false;
-        rich.RibbonTabs[1].Text = "Thanh công cụ";
-        // rich.RibbonTabs.Find(c => c.Text.Contains("Merge")).Visible = false;
-        //rich.RibbonTabs.Find(c => c.Text.Contains("Merge")).Visible = false;
-
+        //rich.RibbonTabs[5].Visible = false;
     };
     settings.Saving = (s, e) =>
     {
@@ -36,53 +27,6 @@
     };
 }).Open("document" + Model.id, DevExpress.XtraRichEdit.DocumentFormat.Html, () => { return Model.noidungbyte; }).GetHtml()
 </center>
-@*<div style="display:inline-block;">
-    @Html.DevExpress().Label(
-            settings =>
-            {
-                settings.Name = "matieuchuan";
-                settings.Text = "Mã tiêu chuẩn";
-            }).GetHtml()
-    @Html.DevExpress().TextBox(
-            settings =>
-            {
-                settings.Name = "txt_ma_tieuchuan";
-                settings.Width = 90;
-                settings.Text = Model.ma_tieuchuan;
-            }).GetHtml()
-    @Html.DevExpress().Label(
-            settings =>
-            {
-                settings.Name = "tentieuchuan";
-                settings.Text = "Tên tiêu chuẩn";
-            }).GetHtml()
-    @Html.DevExpress().TextBox(
-            settings =>
-            {
-                settings.Name = "txt_ten_tieuchuan";
-                settings.Width = 90;
-                settings.Text = Model.ten_tieuchuan;
-            }).GetHtml()
-    @Html.DevExpress().Button(
-            settings =>
-            {
-                settings.Name = "btnLuu";
-                settings.Width = 90;
-                settings.Text = "Lưu";
-                settings.Images.Image.Url = "~/Content/Images/TieuChuan/save.png";
-                settings.ImagePosition = ImagePosition.Left;
-            }).GetHtml()
-    @Html.DevExpress().Button(
-            settings =>
-            {
-                settings.Name = "btnBoLuu";
-                settings.Width = 90;
-                settings.Text = "Bỏ lưu";
-                settings.Images.Image.Url = "~/Content/Images/TieuChuan/notsave.png";
-                settings.ImagePosition = ImagePosition.Left;
-            }).GetHtml()
-</div>*@
-
 @Html.DevExpress().FormLayout(settings =>
 {
     settings.Name = "frmTieuChuan";
@@ -162,3 +106,8 @@
         // btnSettings.RouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartialAddNew" };
     });
 }).GetHtml()
+<style>
+    #frmTieuChuan{
+        margin-top:8px;
+    }
+</style>
