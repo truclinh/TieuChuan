@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "ThemMoi";
+    Layout = "~/Views/Shared/_LayoutWord.cshtml";
+}
+@Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit }
+    )
+@Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.RichEdit }
+    )
+@using (Html.BeginForm())
+{
+    @Html.Action("NoiDungThemMoiPartial")
+}
