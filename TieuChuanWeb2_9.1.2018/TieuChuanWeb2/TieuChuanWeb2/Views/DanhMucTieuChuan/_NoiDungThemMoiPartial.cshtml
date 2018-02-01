@@ -25,3 +25,65 @@
         e.Handled = true;
     };
 }).Open("document" + Model.id, DevExpress.XtraRichEdit.DocumentFormat.Html, () => { return Model.noidungbyte; }).GetHtml()
+
+<div style="width:90%;height:25px;margin:0 auto;border:1px solid #808080">
+    <div style="width:40%;float:left;">
+        <div style="width:50%;float:left">
+            @Html.DevExpress().Label(settings =>
+   {
+       settings.Text = "Mã tiêu chuẩn";
+   }).GetHtml()
+        </div>
+        <div style="width:50%;float:left;">
+            @Html.DevExpress().TextBox(settings =>
+{
+    settings.Name = "txt_ma_tieuchuan";
+    //settings.Text = Model.ma_tieuchuan;
+    //settings.ReadOnly = true;
+    // settings.ClientVisible = false;
+}).GetHtml()
+        </div>
+
+    </div>
+    <div style="width:40%;float:left;">
+        <div style="width:50%;float:left;">
+            @Html.DevExpress().Label(settings =>
+           {
+               settings.Text = "Tên tiêu chuẩn";
+           }).GetHtml()
+        </div>
+        <div style="width:50%;float:left;">
+            @Html.DevExpress().TextBox(settings =>
+{
+    settings.Name = "txt_ten_tieuchuan";
+    //settings.Text = Model.ten_tieuchuan;
+    //settings.ReadOnly = true;
+    // settings.ClientVisible = false;
+}).GetHtml()
+        </div>
+    </div>
+    <div style="width:20%;float:left;">
+        <div style="width:50%;float:left;">
+            @Html.DevExpress().Button(settings =>
+       {
+           settings.Name = "btnLuu";
+           settings.Text = "Lưu";
+           settings.UseSubmitBehavior = true;
+           //settings.ClientSideEvents.Click = "fncBtnLuu1Click";
+           settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/save.png");
+           settings.ImagePosition = ImagePosition.Left;
+       }).GetHtml()
+        </div>
+        <div style="width:50%;float:left;">
+            @Html.DevExpress().Button(settings =>
+       {
+           settings.Name = "btnBoLuu";
+           settings.Text = "Bỏ lưu";
+           // settings.ClientSideEvents.Click = "fncBtnBoLuuClick";
+           //settings.UseSubmitBehavior = true;
+           settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/notsave.png");
+           settings.ImagePosition = ImagePosition.Left;
+       }).GetHtml()
+        </div>
+    </div>
+</div>

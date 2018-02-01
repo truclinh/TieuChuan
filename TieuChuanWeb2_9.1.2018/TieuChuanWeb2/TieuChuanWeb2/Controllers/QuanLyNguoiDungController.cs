@@ -152,5 +152,23 @@ namespace TieuChuanWeb2.Controllers
             }
             return RedirectToAction("DangNhap", "TaiKhoan");
         }
+
+        //public ActionResult SaveDocument()
+        //{
+        //    string FileName = "test1";
+        //    var path = System.Web.HttpContext.Current.Server.MapPath(string.Format("{0}/{1}_{2}", DevExpress.XtraRichEdit.DocumentFormat.Html, FileName, ".doc"));
+        //    byte[] lbRTF = null;
+        //    lbRTF = RichEditExtension.SaveCopy("RichEditName", DevExpress.XtraRichEdit.DocumentFormat.Html);
+        //    System.IO.File.WriteAllBytes(path, lbRTF);
+        //    return View("Index");
+        //}
+        //public ActionResult SaveDocument(byte[] bytes) {
+        //    dm_tieuchuan dm = new dm_tieuchuan();
+        //    var model =db1.dm_tieuchuan;
+        //    var da = model.FirstOrDefault(n => n.noidungbyte == bytes&& n.id=="");
+        //    UpdateModel(da);
+        //    db1.SaveChanges();
+        //    return View("Index");
+        //}
     }
 }

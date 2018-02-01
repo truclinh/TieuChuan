@@ -660,5 +660,63 @@ namespace TieuChuanWeb2.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spPhanQuyenNguoiDung_Result>("spPhanQuyenNguoiDung", ma_nsdParameter);
         }
+    
+        public virtual int sp_CapNhatTieuChuan(Nullable<System.Guid> id, string ma_tieuchuan, string ten_tieuchuan, string nguoisua, Nullable<System.DateTime> ngaysua, string noidung)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var ma_tieuchuanParameter = ma_tieuchuan != null ?
+                new ObjectParameter("ma_tieuchuan", ma_tieuchuan) :
+                new ObjectParameter("ma_tieuchuan", typeof(string));
+    
+            var ten_tieuchuanParameter = ten_tieuchuan != null ?
+                new ObjectParameter("ten_tieuchuan", ten_tieuchuan) :
+                new ObjectParameter("ten_tieuchuan", typeof(string));
+    
+            var nguoisuaParameter = nguoisua != null ?
+                new ObjectParameter("nguoisua", nguoisua) :
+                new ObjectParameter("nguoisua", typeof(string));
+    
+            var ngaysuaParameter = ngaysua.HasValue ?
+                new ObjectParameter("ngaysua", ngaysua) :
+                new ObjectParameter("ngaysua", typeof(System.DateTime));
+    
+            var noidungParameter = noidung != null ?
+                new ObjectParameter("noidung", noidung) :
+                new ObjectParameter("noidung", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatTieuChuan", idParameter, ma_tieuchuanParameter, ten_tieuchuanParameter, nguoisuaParameter, ngaysuaParameter, noidungParameter);
+        }
+    
+        public virtual int sp_ThemMoiTieuChuan(Nullable<System.Guid> id, string ma_tieuchuan, string ten_tieuchuan, string nguoitao, Nullable<System.DateTime> ngaytao, string noidung)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var ma_tieuchuanParameter = ma_tieuchuan != null ?
+                new ObjectParameter("ma_tieuchuan", ma_tieuchuan) :
+                new ObjectParameter("ma_tieuchuan", typeof(string));
+    
+            var ten_tieuchuanParameter = ten_tieuchuan != null ?
+                new ObjectParameter("ten_tieuchuan", ten_tieuchuan) :
+                new ObjectParameter("ten_tieuchuan", typeof(string));
+    
+            var nguoitaoParameter = nguoitao != null ?
+                new ObjectParameter("nguoitao", nguoitao) :
+                new ObjectParameter("nguoitao", typeof(string));
+    
+            var ngaytaoParameter = ngaytao.HasValue ?
+                new ObjectParameter("ngaytao", ngaytao) :
+                new ObjectParameter("ngaytao", typeof(System.DateTime));
+    
+            var noidungParameter = noidung != null ?
+                new ObjectParameter("noidung", noidung) :
+                new ObjectParameter("noidung", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiTieuChuan", idParameter, ma_tieuchuanParameter, ten_tieuchuanParameter, nguoitaoParameter, ngaytaoParameter, noidungParameter);
+        }
     }
 }

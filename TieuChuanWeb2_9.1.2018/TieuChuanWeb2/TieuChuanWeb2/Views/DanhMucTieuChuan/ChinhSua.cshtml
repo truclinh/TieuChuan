@@ -9,8 +9,9 @@
 @Html.DevExpress().GetScripts(
         new Script { ExtensionSuite = ExtensionSuite.RichEdit }
     )
-@using (Html.BeginForm())
-    {
+@using (Html.BeginForm("SaveEditDocument", "DanhMucTieuChuan"))
+{
         @Html.Action("NoiDungPartial")
     }
 
+@*using (Html.BeginForm("SaveDocument", "DanhMucTieuChuan"))*@

@@ -1,5 +1,14 @@
 ﻿@model TieuChuanWeb2.Models.dm_tieuchuan
 <center>
+    @*<script type="text/javascript">
+        function fncBtnLuu1Click() {
+          //  var x = document.getElementById("NoiDung")[0].value;
+            //alert(x);
+        }
+        </script>*@
+    @Html.Hidden("id", Model.id)
+    @*@Html.Hidden("ma_tieuchuan", Model.ma_tieuchuan)
+        @Html.Hidden("ten_tieuchuan", Model.ten_tieuchuan)*@
     @Html.DevExpress().RichEdit(settings =>
 {
     settings.Name = "NoiDung";
@@ -9,105 +18,181 @@
     settings.ReadOnly = false;
     settings.RibbonMode = RichEditRibbonMode.OneLineRibbon;
     settings.Settings.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
+    settings.ViewMergedData = true;
     settings.Init = (s, e) =>
     {
         var rich = s as MVCxRichEdit;
         rich.CreateDefaultRibbonTabs(true);
-        rich.RibbonTabs[0].Visible = false;
-        rich.RibbonTabs[2].Visible = false;
-        rich.RibbonTabs[3].Visible = false;
-        rich.RibbonTabs[4].Visible = false;
+        //rich.RibbonTabs[0].Visible = false;
+        //rich.RibbonTabs[2].Visible = false;
+        //rich.RibbonTabs[3].Visible = false;
+        //rich.RibbonTabs[4].Visible = false;
         //rich.RibbonTabs[5].Visible = false;
     };
+    //settings.Saving = (s, e) =>
+    //{
+    //    byte[] docBytes = RichEditExtension.SaveCopy("NoiDung", DevExpress.XtraRichEdit.DocumentFormat.Html);
+    //    //DXWebApplication1.Models.DataHelper.SaveDocument(docBytes);
+    //    settings.Saving = (s, e) => {
+    //    var doc = DevExpress.Web.Office.DocumentManager.FindDocument(e.DocumentID);
+    //    var arr = doc.SaveCopy();
+    //    //...
+    //};
     settings.Saving = (s, e) =>
     {
-        byte[] docBytes = RichEditExtension.SaveCopy("NoiDung", DevExpress.XtraRichEdit.DocumentFormat.Html);
-        //DXWebApplication1.Models.DataHelper.SaveDocument(docBytes);
+        var doc = DevExpress.Web.Office.DocumentManager.FindDocument("E://Link.txt");
+        var arr = doc.SaveCopy();
         e.Handled = true;
     };
 }).Open("document" + Model.id, DevExpress.XtraRichEdit.DocumentFormat.Html, () => { return Model.noidungbyte; }).GetHtml()
 </center>
-@Html.DevExpress().FormLayout(settings =>
+<div style="width:90%;height:25px;margin:0 auto;border:1px solid #808080">
+    <div style="width:40%;float:left;">
+        <div style="width:50%;float:left">
+            @Html.DevExpress().Label(settings =>
+   {
+       settings.Text = "Mã tiêu chuẩn";
+   }).GetHtml()
+        </div>
+        <div style="width:50%;float:left;">
+            @Html.DevExpress().TextBox(settings =>
 {
-    settings.Name = "frmTieuChuan";
-    settings.EncodeHtml = false;
-    settings.UseDefaultPaddings = false;
-    settings.Width = Unit.Percentage(100);
-    settings.Height= Unit.Percentage(100);
-
-    var groupItem = settings.Items.AddGroupItem(i =>
-    {
-        i.Width = Unit.Percentage(90);
-        i.Caption = "";
-        i.SettingsItemHelpTexts.Position = HelpTextPosition.Bottom;
-        i.ColCount = 4;
-    });
-    groupItem.Items.Add(i =>
-    {
-        i.FieldName = "txt_ma_tieuchuan";
-        i.Caption = "Mã tiêu chuẩn";
-        i.Name = Model.ma_tieuchuan;
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        i.NestedExtension().TextBox(s =>
-        {
-            s.PreRender = (sender, args) =>
-            {
-                MVCxTextBox tb = (MVCxTextBox)sender;
-                tb.Value = Model.ma_tieuchuan;
-            };
-        });
-    });
-    groupItem.Items.Add(i =>
-    {
-        i.FieldName = "txt_ten_tieuchuan";
-        i.Caption = "Tên tiêu chuẩn";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        i.NestedExtension().TextBox(s =>
-        {
-            s.PreRender = (sender, args) =>
-            {
-                MVCxTextBox tb = (MVCxTextBox)sender;
-                tb.Value = Model.ten_tieuchuan;
-            };
-        });
-    });
-    groupItem.Items.Add(i =>
-    {
-        i.FieldName = "btnLuu";
-        i.Caption = "";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
-        btnSettings.Name = "btnLuu";
-        btnSettings.Text = "Lưu";
-        btnSettings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/save.png");
-        btnSettings.ImagePosition = ImagePosition.Left;
-        //btnSettings.Images.Image.IconID = IconID.ActionsAdd16x16office2013;
-        btnSettings.UseSubmitBehavior = true;
-        btnSettings.ClientSideEvents.Click = "fncLuu";
-        // btnSettings.RouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartialAddNew" };
-    });
-    groupItem.Items.Add(i =>
-    {
-        i.FieldName = "btnBoLuu";
-        i.Caption = "";
-        i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
-        i.NestedExtensionSettings.Width = Unit.Percentage(100);
-        var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
-        btnSettings.Name = "btnBoLuu";
-        btnSettings.Text = "Bỏ lưu";
-        btnSettings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/notsave.png");
-        btnSettings.ImagePosition = ImagePosition.Left;
-        //btnSettings.Images.Image.IconID = IconID.ActionsAdd16x16office2013;
-        btnSettings.UseSubmitBehavior = false;
-        btnSettings.ClientSideEvents.Click = "fncBoLuu";
-        // btnSettings.RouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartialAddNew" };
-    });
+    settings.Name = "txt_ma_tieuchuan";
+    settings.Text = Model.ma_tieuchuan;
+    //settings.ReadOnly = true;
+    // settings.ClientVisible = false;
 }).GetHtml()
+        </div>
+
+    </div>
+    <div style="width:40%;float:left;">
+        <div style="width:50%;float:left;">
+            @Html.DevExpress().Label(settings =>
+           {
+               settings.Text = "Tên tiêu chuẩn";
+           }).GetHtml()
+        </div>
+        <div style="width:50%;float:left;">
+            @Html.DevExpress().TextBox(settings =>
+{
+    settings.Name = "txt_ten_tieuchuan";
+    settings.Text = Model.ten_tieuchuan;
+    //settings.ReadOnly = true;
+    // settings.ClientVisible = false;
+}).GetHtml()
+        </div>
+    </div>
+    <div style="width:20%;float:left;">
+        <div style="width:50%;float:left;">
+            @Html.DevExpress().Button(settings =>
+       {
+           settings.Name = "btnLuu";
+           settings.Text = "Lưu";
+           settings.UseSubmitBehavior = true;
+           //settings.ClientSideEvents.Click = "fncBtnLuu1Click";
+           settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/save.png");
+           settings.ImagePosition = ImagePosition.Left;
+       }).GetHtml()
+        </div>
+        <div style="width:50%;float:left;">
+            @Html.DevExpress().Button(settings =>
+       {
+           settings.Name = "btnBoLuu";
+           settings.Text = "Bỏ lưu";
+           // settings.ClientSideEvents.Click = "fncBtnBoLuuClick";
+           //settings.UseSubmitBehavior = true;
+           settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/notsave.png");
+           settings.ImagePosition = ImagePosition.Left;
+       }).GetHtml()
+        </div>
+    </div>
+</div>
+
+
+
+
+@*@Html.DevExpress().FormLayout(settings =>
+    {
+        settings.Name = "frmTieuChuan";
+        settings.EncodeHtml = false;
+        settings.UseDefaultPaddings = false;
+        settings.Width = Unit.Percentage(100);
+        settings.Height= Unit.Percentage(100);
+
+        var groupItem = settings.Items.AddGroupItem(i =>
+        {
+            i.Width = Unit.Percentage(90);
+            i.Caption = "";
+            i.SettingsItemHelpTexts.Position = HelpTextPosition.Bottom;
+            i.ColCount = 4;
+        });
+        groupItem.Items.Add(i =>
+        {
+            i.FieldName = "txt_ma_tieuchuan";
+            i.Caption = "Mã tiêu chuẩn";
+            i.Name = Model.ma_tieuchuan;
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            i.NestedExtension().TextBox(s =>
+            {
+                s.PreRender = (sender, args) =>
+                {
+                    MVCxTextBox tb = (MVCxTextBox)sender;
+                    tb.Value = Model.ma_tieuchuan;
+                };
+            });
+        });
+        groupItem.Items.Add(i =>
+        {
+            i.FieldName = "txt_ten_tieuchuan";
+            i.Caption = "Tên tiêu chuẩn";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            i.NestedExtension().TextBox(s =>
+            {
+                s.PreRender = (sender, args) =>
+                {
+                    MVCxTextBox tb = (MVCxTextBox)sender;
+                    tb.Value = Model.ten_tieuchuan;
+                };
+            });
+        });
+        groupItem.Items.Add(i =>
+        {
+            i.FieldName = "btnLuu";
+            i.Caption = "";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
+            btnSettings.Name = "btnLuu";
+            btnSettings.Text = "Lưu";
+            btnSettings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/save.png");
+            btnSettings.ImagePosition = ImagePosition.Left;
+            //btnSettings.Images.Image.IconID = IconID.ActionsAdd16x16office2013;
+            btnSettings.UseSubmitBehavior = true;
+           // btnSettings.ClientSideEvents.Click = "fncLuu";
+            // btnSettings.RouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartialAddNew" };
+            btnSettings.ClientSideEvents.Click = "fncBtnLuu1Click";
+        });
+        groupItem.Items.Add(i =>
+        {
+            i.FieldName = "btnBoLuu";
+            i.Caption = "";
+            i.NestedExtensionType = FormLayoutNestedExtensionItemType.Button; //required type here
+            i.NestedExtensionSettings.Width = Unit.Percentage(100);
+            var btnSettings = (ButtonSettings)i.NestedExtensionSettings;
+            btnSettings.Name = "btnBoLuu";
+            btnSettings.Text = "Bỏ lưu";
+            btnSettings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/notsave.png");
+            btnSettings.ImagePosition = ImagePosition.Left;
+            //btnSettings.Images.Image.IconID = IconID.ActionsAdd16x16office2013;
+            btnSettings.UseSubmitBehavior = false;
+            btnSettings.ClientSideEvents.Click = "fncBoLuu";
+            // btnSettings.RouteValues = new { Controller = "QuanLyNguoiDung", Action = "QuanLyNguoiDungPartialAddNew" };
+        });
+    }).GetHtml()*@
 <style>
-    #frmTieuChuan{
-        margin-top:8px;
+    #frmTieuChuan {
+        margin-top: 8px;
     }
 </style>
