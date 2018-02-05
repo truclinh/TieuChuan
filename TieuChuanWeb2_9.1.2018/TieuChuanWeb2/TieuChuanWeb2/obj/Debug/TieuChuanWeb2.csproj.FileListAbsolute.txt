@@ -182,7 +182,6 @@ E:\Tieu chuan\TieuChuanWeb2\TieuChuanWeb2\bin\ja\DevExpress.Spreadsheet.v17.1.Co
 E:\Tieu chuan\TieuChuanWeb2\TieuChuanWeb2\bin\ru\DevExpress.Spreadsheet.v17.1.Core.resources.dll
 E:\Tieu chuan\TieuChuanWeb2\TieuChuanWeb2\obj\Debug\TieuChuanWeb2.dll
 E:\Tieu chuan\TieuChuanWeb2\TieuChuanWeb2\obj\Debug\TieuChuanWeb2.pdb
-E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\de\DevExpress.XtraReports.v17.1.Web.resources.dll
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\TieuChuanWeb2.dll.config
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\TieuChuanWeb2.dll
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\TieuChuanWeb2.pdb
@@ -301,6 +300,7 @@ E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\d
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\es\DevExpress.XtraReports.v17.1.resources.dll
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\ja\DevExpress.XtraReports.v17.1.resources.dll
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\ru\DevExpress.XtraReports.v17.1.resources.dll
+E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\de\DevExpress.XtraReports.v17.1.Web.resources.dll
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\es\DevExpress.XtraReports.v17.1.Web.resources.dll
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\ja\DevExpress.XtraReports.v17.1.Web.resources.dll
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\ru\DevExpress.XtraReports.v17.1.Web.resources.dll
@@ -366,4 +366,3 @@ E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\j
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\bin\ru\DevExpress.Spreadsheet.v17.1.Core.resources.dll
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\obj\Debug\TieuChuanWeb2.dll
 E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\obj\Debug\TieuChuanWeb2.pdb
-E:\Tieu chuan\TieuChuan\TieuChuanWeb2_9.1.2018\TieuChuanWeb2\TieuChuanWeb2\obj\Debug\TieuChuanWeb2.csprojResolveAssemblyReference.cache
