@@ -6,6 +6,10 @@
 }
 @*<p name="DetailNotes"></p>*@
 <script type="text/javascript">
+    //window.onunload = refreshParent;
+    //function refreshParent() {
+    //    window.opener.location.reload();
+    //}
     function OnGridFocusedRowChanged(s, e) {
         s.GetRowValues(s.GetFocusedRowIndex(), 'id;ma_tieuchuan;ten_tieuchuan', OnGetRowValues);
         //alert("jhjh");
@@ -18,6 +22,7 @@
         //var x = document.getElementById("txtHiddenId_I").value;
         var url = '@Url.Action("ThemMoi", "DanhMucTieuChuan")';
         window.open(url, "_blank", "toolbar=yes,top=10,left=150,right=150,width=970,height=670");
+
         //'Url.Action("ChinhSua","DanhMucTieuChuan", { new id= x } )';
         // alert(x);
     }
@@ -42,46 +47,70 @@
 
 
 
-       // window.open(url, "_blank", "toolbar=yes,top=10,left=150,right=150,width=930,height=670");
+        // window.open(url, "_blank", "toolbar=yes,top=10,left=150,right=150,width=930,height=670");
         //'Url.Action("ChinhSua","DanhMucTieuChuan", { new id= x } )';
         // alert(x);
     }
 </script>
 <style>
-    #txtHiddenId{
-        display:none;
+    #txtHiddenId {
+        display: none;
+    }
+
+    .cs {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        width: 700px;
+        border-radius: 20px;
+        border: 2px solid blue;
+        margin: 0px auto;
+        margin-top: 4%;
+        margin-bottom: 2%;
+    }
+
+    table#DanhMucTieuChuan {
+        width: 30%;
+        margin: auto;
+    }
+
+    div#khung {
+        margin-top: 5%;
     }
 </style>
+
 @Html.DevExpress().TextBox(settings =>
 {
     settings.Name = "txtHiddenId";
     settings.ReadOnly = true;
-   // settings.ClientVisible = false;
+    // settings.ClientVisible = false;
 }).GetHtml()
-
-@Html.Action("DanhMucTieuChuanPartial")
-@*--------------------------------------Button Thêm*@
-@Html.DevExpress().Button(settings =>
+<div id="khung">
+    @Html.Action("DanhMucTieuChuanPartial")
+    <div style="width:100%;text-align:center;margin-top:2%">
+        @*--------------------------------------Button Thêm*@
+        @Html.DevExpress().Button(settings =>
 {
     settings.Name = "btnThem";
     settings.Text = "Thêm";
     settings.ClientSideEvents.Click = "fncBtnThemClick";
 }).GetHtml()
-@*--------------------------------------Button Sửa*@
-@Html.DevExpress().Button(settings =>
+        @*--------------------------------------Button Sửa*@
+        @Html.DevExpress().Button(settings =>
 {
     settings.Name = "btnSua";
     settings.Text = "Sửa";
     settings.ClientSideEvents.Click = "fncBtnSuaClick";
 }).GetHtml()
-@*--------------------------------------Button Xóa*@
-@Html.DevExpress().Button(settings =>
+        @*--------------------------------------Button Xóa*@
+        @Html.DevExpress().Button(settings =>
 {
     settings.Name = "btnXoa";
     settings.Text = "Xóa";
     settings.ClientSideEvents.Click = "fncBtnXoaClick";
 }).GetHtml()
-
+    </div>
+</div>
 
 
 

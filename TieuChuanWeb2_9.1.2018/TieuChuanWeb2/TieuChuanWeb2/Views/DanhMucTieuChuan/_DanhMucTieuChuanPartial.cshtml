@@ -16,9 +16,9 @@
 
 
         settings.CommandColumn.Visible = true;
-        settings.CommandColumn.ShowNewButton = true;
-        settings.CommandColumn.ShowDeleteButton = true;
-        settings.CommandColumn.ShowEditButton = true;
+        //settings.CommandColumn.ShowNewButton = true;
+        //settings.CommandColumn.ShowDeleteButton = true;
+        //settings.CommandColumn.ShowEditButton = true;
 
         settings.KeyFieldName = "id";
 
@@ -34,19 +34,21 @@
         settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
         settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
 
-        settings.Columns.Add("ma_tieuchuan");
-        settings.Columns.Add("ten_tieuchuan");
+        //settings.Columns.Add("ma_tieuchuan");
+        //settings.Columns.Add("ten_tieuchuan");
         //settings.Columns.Add("noidung");
         settings.ClientSideEvents.FocusedRowChanged = "OnGridFocusedRowChanged";
-        //settings.Columns.Add(column =>
-        //{
-        //    column.FieldName = "noidung";
-        //    column.Caption = "Nội dung";
-        //    column.ShowInCustomizationForm = true;
-        //    // column.ColumnType
-
-        //});
-        settings.SettingsPager.PageSize = 15;
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "ma_tieuchuan";
+            column.Caption = "Mã tiêu chuẩn";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "ten_tieuchuan";
+            column.Caption = "Tên tiêu chuẩn";
+        });
+        settings.SettingsPager.PageSize = 12;
         settings.SettingsPager.FirstPageButton.Visible = true;
         settings.SettingsPager.FirstPageButton.Text = "Trang đầu";
         settings.SettingsPager.LastPageButton.Visible = true;

@@ -269,6 +269,8 @@
     <Content Include="Views\Shared\_LayoutWord.cshtml" />
     <Content Include="Views\DanhMucTieuChuan\ThemMoi.cshtml" />
     <Content Include="Views\DanhMucTieuChuan\_NoiDungThemMoiPartial.cshtml" />
+    <Content Include="Views\DanhMucTieuChi\Index.cshtml" />
+    <Content Include="Views\DanhMucTieuChi\_DanhMucTieuChiPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -375,7 +377,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DanhMucTieuChi\" />
     <Folder Include="Views\QuanLy\" />
   </ItemGroup>
   <ItemGroup>

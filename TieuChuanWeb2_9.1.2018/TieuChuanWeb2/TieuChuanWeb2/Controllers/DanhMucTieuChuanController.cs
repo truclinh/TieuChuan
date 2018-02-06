@@ -16,43 +16,43 @@ namespace TieuChuanWeb2.Controllers
         QL_TieuChuan2Entities db = new QL_TieuChuan2Entities();
         public ActionResult Index()
         {
-            if (Session["TaiKhoan"] != null)
-            {
-                return View();
-            }
-            return RedirectToAction("DangNhap", "TaiKhoan");
+            //if (Session["TaiKhoan"] != null)
+            //{
+            return View();
+            //}
+            //return RedirectToAction("DangNhap", "TaiKhoan");
         }
         [ValidateInput(false)]
         public ActionResult DanhMucTieuChuanPartial()
         {
-            if (Session["TaiKhoan"] != null)
-            {
-                var model = db.dm_tieuchuan;
-                return PartialView("_DanhMucTieuChuanPartial", model.OrderByDescending(n => n.ngaytao).ToList());
-            }
-            return RedirectToAction("DangNhap", "TaiKhoan");
+            //if (Session["TaiKhoan"] != null)
+            //{
+            var model = db.dm_tieuchuan;
+            return PartialView("_DanhMucTieuChuanPartial", model.OrderByDescending(n => n.ngaytao).ToList());
+            //}
+            //return RedirectToAction("DangNhap", "TaiKhoan");
 
         }
 
         //View Thêm mới
         public ActionResult ThemMoi()
         {
-            if (Session["TaiKhoan"] != null)
-            {
-                var da = db.dm_tieuchuan.SingleOrDefault(n => n.id == id);
-                return View();
-            }
-            return RedirectToAction("DangNhap", "TaiKhoan");
+            //if (Session["TaiKhoan"] != null)
+            //{
+            // var da = db.dm_tieuchuan.SingleOrDefault(n => n.id == id);
+            return View();
+            //}
+            //return RedirectToAction("DangNhap", "TaiKhoan");
         }
         //View Chỉnh sửa
         public ActionResult ChinhSua(System.Guid id)
         {
-            if (Session["TaiKhoan"] != null)
-            {
-                var da = db.dm_tieuchuan.SingleOrDefault(n => n.id == id);
-                return View();
-            }
-            return RedirectToAction("DangNhap", "TaiKhoan");
+            //if (Session["TaiKhoan"] != null)
+            //{
+            // var da = db.dm_tieuchuan.SingleOrDefault(n => n.id == id);
+            return View();
+            //}
+            //return RedirectToAction("DangNhap", "TaiKhoan");
         }
         //View Chỉnh sửa
         public ActionResult Xoa(System.Guid id)
@@ -75,11 +75,12 @@ namespace TieuChuanWeb2.Controllers
             return RedirectToAction("Index", "DanhMucTieuChuan");
         }
         //-------------------------------------- Hiện lên nội dung trong Word
-        public ActionResult SaveNewDocument(FormCollection f,Guid id) {
+        public ActionResult SaveNewDocument(FormCollection f, Guid id)
+        {
             string txtMaTC = f["txt_ma_tieuchuan"].ToString();
             string txtTenTC = f["txt_ten_tieuchuan"].ToString();
             //Guid id = System.Guid.NewGuid();
-            var doc = DevExpress.Web.Office.DocumentManager.FindDocument("document" +id);
+            var doc = DevExpress.Web.Office.DocumentManager.FindDocument("document" + id);
             string richEditString = Encoding.UTF8.GetString(doc.SaveCopy());
             var model = db.dm_tieuchuan;
 
@@ -88,9 +89,9 @@ namespace TieuChuanWeb2.Controllers
             {
                 try
                 {
-                    db.sp_ThemMoiTieuChuan(id, txtMaTC, txtTenTC, Session["TenNguoiDung"].ToString(), DateTime.Now, richEditString);
+                    db.sp_ThemMoiTieuChuan(id, txtMaTC, txtTenTC, "Linh", DateTime.Now, richEditString);
                     //model.Add(item);
-                    //db.SaveChanges();
+                   db.SaveChanges();
                 }
                 catch (Exception e)
                 {
@@ -99,7 +100,8 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return View("Index");
+            //return View("Index");
+            return Content("<script type='text/javascript'>setInterval(function(){window.close();alert('Lưu thành công !!');window.opener.location.reload(true);},2000);</script>");
         }
         public ActionResult SaveEditDocument(Guid id, FormCollection f)
         {
@@ -117,9 +119,9 @@ namespace TieuChuanWeb2.Controllers
                     var modelItem = model.FirstOrDefault(it => it.id == id);
                     if (modelItem != null)
                     {
-                        db.sp_CapNhatTieuChuan(id, txtMaTC, txtTenTC, Session["TenNguoiDung"].ToString(), DateTime.Now, richEditString);
+                        db.sp_CapNhatTieuChuan(id, txtMaTC, txtTenTC, "Linh", DateTime.Now, richEditString);
                         //UpdateModel(modelItem);
-                       //db.SaveChanges();
+                        db.SaveChanges();
                     }
                 }
                 catch (Exception e)
@@ -129,7 +131,8 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return View("Index");
+            //  return View("Index");
+            return Content("<script type='text/javascript'>setInterval(function(){window.close();alert('Lưu thành công !!');window.opener.location.reload(true);},2000);</script>");
         }
         public ActionResult NoiDungPartial(System.Guid id)
         {
@@ -147,7 +150,7 @@ namespace TieuChuanWeb2.Controllers
             //var x = model.SingleOrDefault(n => n.id == new Guid("D4EF2CE0-72DE-49CD-8BC7-158CBB8CEB3F"));
             dm_tieuchuan x = new dm_tieuchuan();
             x.id = Guid.NewGuid();
-           x.noidung ="Nhập đi";
+            x.noidung = "Nhập đi";
             x.noidungbyte = Encoding.UTF8.GetBytes(x.noidung);
             return PartialView("_NoiDungPartial", x);
         }

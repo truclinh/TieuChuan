@@ -13,5 +13,18 @@
 {
         @Html.Action("NoiDungPartial")
     }
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$('#btnLuu_CD').click(function () {
+        //   // alert("Lưu thành công !!");
+        //    //window.opener.location.reload(true);
+        //    //window.close();
+        //    opener.location.reload(true);
+        //    self.close();
+        //});
+        $('#btnBoLuu_CD').click(function () {
+            window.close();
+        });
+    });
+</script>
 @*using (Html.BeginForm("SaveDocument", "DanhMucTieuChuan"))*@
