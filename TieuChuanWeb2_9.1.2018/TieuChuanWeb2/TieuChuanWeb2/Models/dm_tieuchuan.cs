@@ -11,7 +11,7 @@ namespace TieuChuanWeb2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class dm_tieuchuan
     {
         public System.Guid id { get; set; }

@@ -285,5 +285,7 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_CapNhatTieuChuan" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatTieuChuan" />
     <FunctionImportMapping FunctionImportName="sp_ThemMoiTieuChuan" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiTieuChuan" />
+    <FunctionImportMapping FunctionImportName="sp_CapNhatTieuChi" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatTieuChi" />
+    <FunctionImportMapping FunctionImportName="sp_ThemMoiTieuChi" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiTieuChi" />
   </EntityContainerMapping>
 </Mapping>

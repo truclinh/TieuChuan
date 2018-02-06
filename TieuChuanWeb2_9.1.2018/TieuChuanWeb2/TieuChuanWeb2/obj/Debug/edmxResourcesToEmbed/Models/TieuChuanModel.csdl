@@ -215,6 +215,24 @@
       <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
       <Parameter Name="noidung" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_CapNhatTieuChi">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ten_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ma_tieuchuan" Mode="In" Type="String" />
+      <Parameter Name="nguoisua" Mode="In" Type="String" />
+      <Parameter Name="ngaysua" Mode="In" Type="DateTime" />
+      <Parameter Name="noidung" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemMoiTieuChi">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ten_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="ma_tieuchuan" Mode="In" Type="String" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+      <Parameter Name="noidung" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />

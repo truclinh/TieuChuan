@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using TieuChuanWeb2.Models;
 namespace TieuChuanWeb2.Controllers
 {
     public class DanhMucTieuChiController : Controller
@@ -12,27 +12,34 @@ namespace TieuChuanWeb2.Controllers
         // GET: DanhMucTieuChi
         public ActionResult Index()
         {
+            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan), "ma_tieuchuan", "ten_tieuchuan");
             return View();
         }
 
-        TieuChuanWeb2.Models.QL_TieuChuan2Entities db = new TieuChuanWeb2.Models.QL_TieuChuan2Entities();
+        QL_TieuChuan2Entities db = new QL_TieuChuan2Entities();
 
         [ValidateInput(false)]
         public ActionResult DanhMucTieuChiPartial()
         {
             var model = db.dm_tieuchi;
-            return PartialView("_DanhMucTieuChiPartial", model.ToList());
+            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan), "ma_tieuchuan", "ten_tieuchuan");
+            return PartialView("_DanhMucTieuChiPartial", model.OrderByDescending(n => n.ngaytao).ToList());
         }
-
-        [HttpPost, ValidateInput(false)]
-        public ActionResult DanhMucTieuChiPartialAddNew(TieuChuanWeb2.Models.dm_tieuchi item)
+        public ActionResult SaveNewDocument(FormCollection f)
         {
+            string txtMaTC = f["txtNew_ma_tieuchi"].ToString();
+            string txtTenTC = f["txtNew_ten_tieuchi"].ToString();
+            string txtNoiDung = f["txtNew_noidung"].ToString();
+            string txtMaTieuChuan = f["txtNew_ma_tieuchuan"].ToString();
+            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan), "ma_tieuchuan", "ten_tieuchuan");
+            Guid id = System.Guid.NewGuid();
             var model = db.dm_tieuchi;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    model.Add(item);
+                    db.sp_ThemMoiTieuChi(id, txtMaTC, txtTenTC, txtMaTieuChuan, "Linh", DateTime.Now, txtNoiDung);
+                    //model.Add(item);
                     db.SaveChanges();
                 }
                 catch (Exception e)
@@ -42,20 +49,27 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_DanhMucTieuChiPartial", model.ToList());
+            return View("Index");
+            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.opener.location.reload(true);},500);</script>");           
         }
-        [HttpPost, ValidateInput(false)]
-        public ActionResult DanhMucTieuChiPartialUpdate(TieuChuanWeb2.Models.dm_tieuchi item)
+        public ActionResult SaveEditDocument(FormCollection f)
         {
+            Guid txtId = new Guid(f["txtHiddenId"].ToString());
+            string txtMaTC = f["txt_ma_tieuchi"].ToString();
+            string txtTenTC = f["txt_ten_tieuchi"].ToString();
+            string txtNoiDung = f["txt_noidung"].ToString();
+            string txtMaTieuChuan = f["txt_ma_tieuchuan"].ToString();
+            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan), "ma_tieuchuan", "ten_tieuchuan");
             var model = db.dm_tieuchi;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var modelItem = model.FirstOrDefault(it => it.id == item.id);
+                    var modelItem = model.FirstOrDefault(it => it.id == txtId);
                     if (modelItem != null)
                     {
-                        this.UpdateModel(modelItem);
+                        db.sp_CapNhatTieuChi(txtId, txtMaTC, txtTenTC, txtMaTieuChuan, "Linh", DateTime.Now, txtNoiDung);
+                        //UpdateModel(modelItem);
                         db.SaveChanges();
                     }
                 }
@@ -66,10 +80,10 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_DanhMucTieuChiPartial", model.ToList());
+            return View("Index");
+            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.reload(true);},500);</script>");
         }
-        [HttpPost, ValidateInput(false)]
-        public ActionResult DanhMucTieuChiPartialDelete(System.Guid id)
+        public ActionResult Xoa(System.Guid id)
         {
             var model = db.dm_tieuchi;
             if (id != null)
@@ -86,7 +100,7 @@ namespace TieuChuanWeb2.Controllers
                     ViewData["EditError"] = e.Message;
                 }
             }
-            return PartialView("_DanhMucTieuChiPartial", model.ToList());
+            return RedirectToAction("Index", "DanhMucTieuChi");
         }
     }
 }
