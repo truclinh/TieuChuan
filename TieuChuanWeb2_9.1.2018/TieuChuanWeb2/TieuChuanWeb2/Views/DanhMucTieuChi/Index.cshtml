@@ -12,12 +12,10 @@
         s.GetRowValues(s.GetFocusedRowIndex(), 'id;ma_tieuchi;ten_tieuchi;ma_tieuchuan;noidung', OnGetRowValues);
     }
     function OnGetRowValues(values) {
-        // alert(values[1]);
         txtHiddenId.SetText(values[0]);
-        txt_ma_tieuchi.SetText(values[1]);
-       
+        txt_ma_tieuchi.SetText(values[1]);       
         txt_ten_tieuchi.SetText(values[2]);
-        txt_ma_tieuchuan.SetText(values[3]);
+        document.getElementById("txt_ma_tieuchuan").value = values[3];
         txt_noidung.SetText(values[4]);
         //txt_ghichu.SetText(values[6]); 
     }
@@ -54,6 +52,11 @@
     //});
 </script>
 <style>
+        .cbo {
+        width: 168px;
+        height: 22px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
     #txtHiddenId {
         display: none;
     }
@@ -166,10 +169,6 @@
                             <label>Tiêu chuẩn</label>
                         </td>
                         <td class="ten">
-                            @*@Html.DevExpress().TextBox(settings =>
-                            {
-                                settings.Name = "txtNew_ma_tieuchuan";
-                            }).GetHtml()*@
                             @Html.DropDownList("txtNew_ma_tieuchuan", (IEnumerable<SelectListItem>)ViewBag.cboMaTieuChuan, "---Chọn tiêu chuẩn---", new { @class = "cbo" })
                         </td>
                     </tr>
@@ -257,10 +256,6 @@
                                 <label>Tiêu chuẩn</label>
                             </td>                           
                             <td class="ten">
-                                @*@Html.DevExpress().TextBox(settings =>
-                           {
-                               settings.Name = "txt_ma_tieuchuan";
-                           }).GetHtml()*@
                                 @Html.DropDownList("txt_ma_tieuchuan", (IEnumerable<SelectListItem>)ViewBag.cboMaTieuChuan, "---Chọn tiêu chuẩn---", new { @class = "cbo" })
                             </td>
                         </tr>

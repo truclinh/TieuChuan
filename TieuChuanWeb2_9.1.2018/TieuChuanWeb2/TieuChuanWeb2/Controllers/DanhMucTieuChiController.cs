@@ -12,7 +12,7 @@ namespace TieuChuanWeb2.Controllers
         // GET: DanhMucTieuChi
         public ActionResult Index()
         {
-            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan), "ma_tieuchuan", "ten_tieuchuan");
+            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
             return View();
         }
 
@@ -22,7 +22,7 @@ namespace TieuChuanWeb2.Controllers
         public ActionResult DanhMucTieuChiPartial()
         {
             var model = db.dm_tieuchi;
-            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan), "ma_tieuchuan", "ten_tieuchuan");
+            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
             return PartialView("_DanhMucTieuChiPartial", model.OrderByDescending(n => n.ngaytao).ToList());
         }
         public ActionResult SaveNewDocument(FormCollection f)
@@ -31,7 +31,9 @@ namespace TieuChuanWeb2.Controllers
             string txtTenTC = f["txtNew_ten_tieuchi"].ToString();
             string txtNoiDung = f["txtNew_noidung"].ToString();
             string txtMaTieuChuan = f["txtNew_ma_tieuchuan"].ToString();
-            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan), "ma_tieuchuan", "ten_tieuchuan");
+            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
+            //ViewBag.cboMaTieuChuan = db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan).Select(i => new { TenTC = i.ten_tieuchuan, MaTC = i.ma_tieuchuan });
+
             Guid id = System.Guid.NewGuid();
             var model = db.dm_tieuchi;
             if (ModelState.IsValid)
@@ -59,7 +61,9 @@ namespace TieuChuanWeb2.Controllers
             string txtTenTC = f["txt_ten_tieuchi"].ToString();
             string txtNoiDung = f["txt_noidung"].ToString();
             string txtMaTieuChuan = f["txt_ma_tieuchuan"].ToString();
-            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan), "ma_tieuchuan", "ten_tieuchuan");
+            ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
+            //ViewBag.cboMaTieuChuan = db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan).Select(i => new { TenTC = i.ten_tieuchuan, MaTC = i.ma_tieuchuan });
+            // ViewBag.cboMaTieuChuan = db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan).Select(i => new { TenTC = i.ten_tieuchuan, MaTC = i.ma_tieuchuan });
             var model = db.dm_tieuchi;
             if (ModelState.IsValid)
             {

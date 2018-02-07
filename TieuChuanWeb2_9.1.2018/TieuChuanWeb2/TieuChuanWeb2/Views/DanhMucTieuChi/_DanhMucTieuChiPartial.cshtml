@@ -28,10 +28,31 @@
         settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
         settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
 
-        settings.Columns.Add("ma_tieuchi");
-        settings.Columns.Add("ten_tieuchi");
-        settings.Columns.Add("ma_tieuchuan");
-        settings.Columns.Add("noidung");
+        //settings.Columns.Add("ma_tieuchi");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "ma_tieuchi";
+            column.Caption = "Mã tiêu chí";
+        });
+        // settings.Columns.Add("ten_tieuchi");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "ten_tieuchi";
+            column.Caption = "Tên tiêu chí";
+        });
+        //settings.Columns.Add("noidung");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "noidung";
+            column.Caption = "Nội dung";
+        });
+        //settings.Columns.Add("ma_tieuchuan");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "ma_tieuchuan";
+            column.Caption = "Tiêu chuẩn";
+        });
+
         settings.ClientSideEvents.FocusedRowChanged = "OnGridFocusedRowChanged";
 
         settings.SettingsPager.PageSize = 12;

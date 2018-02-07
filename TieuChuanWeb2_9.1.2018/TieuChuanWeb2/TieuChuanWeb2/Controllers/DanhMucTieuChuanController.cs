@@ -100,8 +100,8 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            //return View("Index");
-            return Content("<script type='text/javascript'>setInterval(function(){window.close();alert('Lưu thành công !!');window.opener.location.reload(true);},2000);</script>");
+            return View("Index");
+            //return Content("<script type='text/javascript'>setInterval(function(){window.close();alert('Lưu thành công !!');window.opener.location.reload(true);},2000);</script>");
         }
         public ActionResult SaveEditDocument(Guid id, FormCollection f)
         {
@@ -131,8 +131,8 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            //  return View("Index");
-            return Content("<script type='text/javascript'>setInterval(function(){window.close();alert('Lưu thành công !!');window.opener.location.reload(true);},2000);</script>");
+             return View("Index");
+           // return Content("<script type='text/javascript'>setInterval(function(){window.close();alert('Lưu thành công !!');window.opener.location.reload(true);},2000);</script>");
         }
         public ActionResult NoiDungPartial(System.Guid id)
         {
@@ -150,7 +150,7 @@ namespace TieuChuanWeb2.Controllers
             //var x = model.SingleOrDefault(n => n.id == new Guid("D4EF2CE0-72DE-49CD-8BC7-158CBB8CEB3F"));
             dm_tieuchuan x = new dm_tieuchuan();
             x.id = Guid.NewGuid();
-            x.noidung = "Nhập đi";
+            x.noidung = "";
             x.noidungbyte = Encoding.UTF8.GetBytes(x.noidung);
             return PartialView("_NoiDungPartial", x);
         }
