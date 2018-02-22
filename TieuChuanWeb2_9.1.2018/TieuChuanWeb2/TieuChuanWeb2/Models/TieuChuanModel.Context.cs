@@ -908,5 +908,55 @@ namespace TieuChuanWeb2.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiThongTinKhoa", idParameter, makhoaParameter, tenkhoaParameter);
         }
+    
+        public virtual int sp_CapNhatThongTinBM(Nullable<System.Guid> id, string mabomon, string tenbomon, string makhoa, string googledrive)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var mabomonParameter = mabomon != null ?
+                new ObjectParameter("mabomon", mabomon) :
+                new ObjectParameter("mabomon", typeof(string));
+    
+            var tenbomonParameter = tenbomon != null ?
+                new ObjectParameter("tenbomon", tenbomon) :
+                new ObjectParameter("tenbomon", typeof(string));
+    
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
+    
+            var googledriveParameter = googledrive != null ?
+                new ObjectParameter("googledrive", googledrive) :
+                new ObjectParameter("googledrive", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatThongTinBM", idParameter, mabomonParameter, tenbomonParameter, makhoaParameter, googledriveParameter);
+        }
+    
+        public virtual int sp_ThemMoiThongTinBM(Nullable<System.Guid> id, string mabomon, string tenbomon, string makhoa, string googledrive)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var mabomonParameter = mabomon != null ?
+                new ObjectParameter("mabomon", mabomon) :
+                new ObjectParameter("mabomon", typeof(string));
+    
+            var tenbomonParameter = tenbomon != null ?
+                new ObjectParameter("tenbomon", tenbomon) :
+                new ObjectParameter("tenbomon", typeof(string));
+    
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
+    
+            var googledriveParameter = googledrive != null ?
+                new ObjectParameter("googledrive", googledrive) :
+                new ObjectParameter("googledrive", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiThongTinBM", idParameter, mabomonParameter, tenbomonParameter, makhoaParameter, googledriveParameter);
+        }
     }
 }

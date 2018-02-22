@@ -15,6 +15,10 @@ namespace TieuChuanWeb2.Controllers
         {
             if (Session["TaiKhoan"] != null)
             {
+                TieuChuanDTO tc = new TieuChuanDTO();
+                var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
+                ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
+                ViewBag.DMKhoa1 = new SelectList(db.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
                 return View();
             }
             return RedirectToAction("DangNhap", "TaiKhoan");
@@ -28,98 +32,179 @@ namespace TieuChuanWeb2.Controllers
                 TieuChuanDTO tc = new TieuChuanDTO();
                 var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
                 ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
-
+                ViewBag.DMKhoa1 = new SelectList(db.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
                 var model = db.dm_bomon;
                 return PartialView("_ThongTinBoMonPartial", model.ToList());
             }
             return RedirectToAction("DangNhap", "TaiKhoan");
         }
 
-        [HttpPost, ValidateInput(false)]
-        public ActionResult ThongTinBoMonPartialAddNew(TieuChuanWeb2.Models.dm_bomon item)
+        //[HttpPost, ValidateInput(false)]
+        //public ActionResult ThongTinBoMonPartialAddNew(TieuChuanWeb2.Models.dm_bomon item)
+        //{
+        //    if (Session["TaiKhoan"] != null)
+        //    {
+        //        var model = db.dm_bomon;
+        //        TieuChuanDTO tc = new TieuChuanDTO();
+        //        var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
+        //        ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
+        //        if (ModelState.IsValid)
+        //        {
+        //            try
+        //            {
+        //                item.id = Guid.NewGuid();
+        //                model.Add(item);
+        //                db.SaveChanges();
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                ViewData["EditError"] = e.Message;
+        //            }
+        //        }
+        //        else
+        //            ViewData["EditError"] = "Please, correct all errors.";
+        //        return PartialView("_ThongTinBoMonPartial", model.ToList());
+        //    }
+        //    return RedirectToAction("DangNhap", "TaiKhoan");
+        //}
+        //[HttpPost, ValidateInput(false)]
+        //public ActionResult ThongTinBoMonPartialUpdate(TieuChuanWeb2.Models.dm_bomon item)
+        //{
+        //    if (Session["TaiKhoan"] != null)
+        //    {
+        //        var model = db.dm_bomon;
+        //        TieuChuanDTO tc = new TieuChuanDTO();
+        //        var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
+        //        ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
+        //        if (ModelState.IsValid)
+        //        {
+        //            try
+        //            {
+        //                var modelItem = model.FirstOrDefault(it => it.id == item.id);
+        //                if (modelItem != null)
+        //                {
+        //                    UpdateModel(modelItem);
+        //                    db.SaveChanges();
+        //                }
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                ViewData["EditError"] = e.Message;
+        //            }
+        //        }
+        //        else
+        //            ViewData["EditError"] = "Please, correct all errors.";
+        //        return PartialView("_ThongTinBoMonPartial", model.ToList());
+        //    }
+        //    return RedirectToAction("DangNhap", "TaiKhoan");
+        //}
+        //[HttpPost, ValidateInput(false)]
+        //public ActionResult ThongTinBoMonPartialDelete(System.Guid id)
+        //{
+        //    if (Session["TaiKhoan"] != null)
+        //    {
+        //        var model = db.dm_bomon;
+        //        TieuChuanDTO tc = new TieuChuanDTO();
+        //        var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
+        //        ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
+        //        if (id != null)
+        //        {
+        //            try
+        //            {
+        //                var item = model.FirstOrDefault(it => it.id == id);
+        //                if (item != null)
+        //                    model.Remove(item);
+        //                db.SaveChanges();
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                ViewData["EditError"] = e.Message;
+        //            }
+        //        }
+        //        return PartialView("_ThongTinBoMonPartial", model.ToList());
+        //    }
+        //    return RedirectToAction("DangNhap", "TaiKhoan");
+        //}
+        public ActionResult SaveNewDocument(FormCollection f)
         {
-            if (Session["TaiKhoan"] != null)
+            string txtMaBM = f["txtNew_mabomon"].ToString();
+            string txtTenBM = f["txtNew_tenbomon"].ToString();
+            string txtMaKhoa = f["txtNew_makhoa"].ToString();
+            string txtGoogleDrive = f["txtNew_googledrive"].ToString();
+
+            ViewBag.DMKhoa1 = new SelectList(db.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
+
+            Guid id = System.Guid.NewGuid();
+            var model = db.dm_bomon;
+            if (ModelState.IsValid)
             {
-                var model = db.dm_bomon;
-                TieuChuanDTO tc = new TieuChuanDTO();
-                var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
-                ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
-                if (ModelState.IsValid)
+                try
                 {
-                    try
+                    db.sp_ThemMoiThongTinBM(id, txtMaBM, txtTenBM,txtMaKhoa,txtGoogleDrive);
+                    //model.Add(item);
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            return RedirectToAction("Index", "ThongTinBoMon");
+            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.opener.location.reload(true);},500);</script>");           
+        }
+        public ActionResult SaveEditDocument(FormCollection f)
+        {
+            Guid txtId = new Guid(f["txtHiddenId"].ToString());
+            string txtMaBM = f["txt_mabomon"].ToString();
+            string txtTenBM = f["txt_tenbomon"].ToString();
+            string txtMaKhoa = f["txt_makhoa"].ToString();
+            string txtGoogleDrive = f["txt_googledrive"].ToString();
+
+            ViewBag.DMKhoa1 = new SelectList(db.dm_khoa.ToList().OrderBy(n => n.makhoa), "makhoa", "tenkhoa");
+
+            var model = db.dm_bomon;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var modelItem = model.FirstOrDefault(it => it.id == txtId);
+                    if (modelItem != null)
                     {
-                        item.id = Guid.NewGuid();
-                        model.Add(item);
+                        db.sp_CapNhatThongTinBM(txtId, txtMaBM, txtTenBM, txtMaKhoa, txtGoogleDrive);
+                        //UpdateModel(modelItem);
                         db.SaveChanges();
                     }
-                    catch (Exception e)
-                    {
-                        ViewData["EditError"] = e.Message;
-                    }
                 }
-                else
-                    ViewData["EditError"] = "Please, correct all errors.";
-                return PartialView("_ThongTinBoMonPartial", model.ToList());
-            }
-            return RedirectToAction("DangNhap", "TaiKhoan");
-        }
-        [HttpPost, ValidateInput(false)]
-        public ActionResult ThongTinBoMonPartialUpdate(TieuChuanWeb2.Models.dm_bomon item)
-        {
-            if (Session["TaiKhoan"] != null)
-            {
-                var model = db.dm_bomon;
-                TieuChuanDTO tc = new TieuChuanDTO();
-                var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
-                ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
-                if (ModelState.IsValid)
+                catch (Exception e)
                 {
-                    try
-                    {
-                        var modelItem = model.FirstOrDefault(it => it.id == item.id);
-                        if (modelItem != null)
-                        {
-                            UpdateModel(modelItem);
-                            db.SaveChanges();
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        ViewData["EditError"] = e.Message;
-                    }
+                    ViewData["EditError"] = e.Message;
                 }
-                else
-                    ViewData["EditError"] = "Please, correct all errors.";
-                return PartialView("_ThongTinBoMonPartial", model.ToList());
             }
-            return RedirectToAction("DangNhap", "TaiKhoan");
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            return RedirectToAction("Index", "ThongTinBoMon");
+            //return Content("<script type='text/javascript'>setInterval(function(){alert('Lưu thành công !!');window.reload(true);},500);</script>");
         }
-        [HttpPost, ValidateInput(false)]
-        public ActionResult ThongTinBoMonPartialDelete(System.Guid id)
+        public ActionResult Xoa(System.Guid id)
         {
-            if (Session["TaiKhoan"] != null)
+            var model = db.dm_bomon;
+            if (id != null)
             {
-                var model = db.dm_bomon;
-                TieuChuanDTO tc = new TieuChuanDTO();
-                var lstKhoa = tc.getAllKhoa().OrderBy(n => n.makhoa);
-                ViewBag.DMKhoa = lstKhoa.Select(i => new { TenKhoa = i.tenkhoa, MaKhoa = i.makhoa });
-                if (id != null)
+                try
                 {
-                    try
-                    {
-                        var item = model.FirstOrDefault(it => it.id == id);
-                        if (item != null)
-                            model.Remove(item);
-                        db.SaveChanges();
-                    }
-                    catch (Exception e)
-                    {
-                        ViewData["EditError"] = e.Message;
-                    }
+                    var item = model.FirstOrDefault(it => it.id == id);
+                    if (item != null)
+                        model.Remove(item);
+                    db.SaveChanges();
                 }
-                return PartialView("_ThongTinBoMonPartial", model.ToList());
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
             }
-            return RedirectToAction("DangNhap", "TaiKhoan");
+            return RedirectToAction("Index", "ThongTinBoMon");
         }
     }
 }

@@ -10,9 +10,9 @@
         settings.SettingsBehavior.ConfirmDelete = true;
 
         settings.CommandColumn.Visible = true;
-        settings.CommandColumn.ShowNewButton = true;
-        settings.CommandColumn.ShowDeleteButton = true;
-        settings.CommandColumn.ShowEditButton = true;
+        //settings.CommandColumn.ShowNewButton = true;
+        //settings.CommandColumn.ShowDeleteButton = true;
+        //settings.CommandColumn.ShowEditButton = true;
 
         settings.SettingsCommandButton.NewButton.Text = "Thêm";
         settings.SettingsCommandButton.EditButton.Text = "Sửa";
@@ -35,6 +35,7 @@
 
         settings.SettingsBehavior.AllowFocusedRow = true;
         settings.Styles.FocusedRow.ForeColor = System.Drawing.Color.Red;
+        settings.ClientSideEvents.FocusedRowChanged = "OnGridFocusedRowChanged";
 
         settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
         settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
@@ -94,6 +95,19 @@
             column.FieldName = "googledrive";
             column.Caption = "Google Drive";
         });
+        settings.SettingsPager.PageSize = 10;
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.FirstPageButton.Text = "Trang đầu";
+        settings.SettingsPager.LastPageButton.Visible = true;
+
+        settings.SettingsPager.LastPageButton.Text = "Trang cuối";
+        settings.SettingsPager.Summary.Text = " Trang {0}/{1} (Tổng số bộ môn: {2})";
+        settings.PreRender = (s, e) =>
+        {
+            var sender = s as MVCxGridView;
+            // Set the zero-based index of the initially displayed page 
+            sender.PageIndex = 0;
+        };
     });
     if (ViewData["EditError"] != null){
         grid.SetEditErrorText((string)ViewData["EditError"]);

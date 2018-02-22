@@ -291,5 +291,7 @@
     <FunctionImportMapping FunctionImportName="sp_ThemMoiQLNguoiDung" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiQLNguoiDung" />
     <FunctionImportMapping FunctionImportName="sp_CapNhatThongTinKhoa" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatThongTinKhoa" />
     <FunctionImportMapping FunctionImportName="sp_ThemMoiThongTinKhoa" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiThongTinKhoa" />
+    <FunctionImportMapping FunctionImportName="sp_CapNhatThongTinBM" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatThongTinBM" />
+    <FunctionImportMapping FunctionImportName="sp_ThemMoiThongTinBM" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiThongTinBM" />
   </EntityContainerMapping>
 </Mapping>

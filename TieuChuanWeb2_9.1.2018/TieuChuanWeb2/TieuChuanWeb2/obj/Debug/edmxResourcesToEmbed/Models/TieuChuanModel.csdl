@@ -267,6 +267,20 @@
       <Parameter Name="makhoa" Mode="In" Type="String" />
       <Parameter Name="tenkhoa" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_CapNhatThongTinBM">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="mabomon" Mode="In" Type="String" />
+      <Parameter Name="tenbomon" Mode="In" Type="String" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="googledrive" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemMoiThongTinBM">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="mabomon" Mode="In" Type="String" />
+      <Parameter Name="tenbomon" Mode="In" Type="String" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="googledrive" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />

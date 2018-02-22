@@ -287,6 +287,13 @@
           <Parameter Name="nguoisua" Type="nvarchar" Mode="In" />
           <Parameter Name="ngaysua" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="sp_CapNhatThongTinBM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="mabomon" Type="nvarchar" Mode="In" />
+          <Parameter Name="tenbomon" Type="nvarchar" Mode="In" />
+          <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+          <Parameter Name="googledrive" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="sp_CapNhatThongTinKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
@@ -370,6 +377,13 @@
           <Parameter Name="ghichu" Type="nvarchar" Mode="In" />
           <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
           <Parameter Name="ngaytao" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemMoiThongTinBM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="mabomon" Type="nvarchar" Mode="In" />
+          <Parameter Name="tenbomon" Type="nvarchar" Mode="In" />
+          <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+          <Parameter Name="googledrive" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="sp_ThemMoiThongTinKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
@@ -743,6 +757,20 @@
             <Parameter Name="id" Mode="In" Type="Guid" />
             <Parameter Name="makhoa" Mode="In" Type="String" />
             <Parameter Name="tenkhoa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CapNhatThongTinBM">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="mabomon" Mode="In" Type="String" />
+            <Parameter Name="tenbomon" Mode="In" Type="String" />
+            <Parameter Name="makhoa" Mode="In" Type="String" />
+            <Parameter Name="googledrive" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemMoiThongTinBM">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="mabomon" Mode="In" Type="String" />
+            <Parameter Name="tenbomon" Mode="In" Type="String" />
+            <Parameter Name="makhoa" Mode="In" Type="String" />
+            <Parameter Name="googledrive" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1247,6 +1275,8 @@
           <FunctionImportMapping FunctionImportName="sp_ThemMoiQLNguoiDung" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiQLNguoiDung" />
           <FunctionImportMapping FunctionImportName="sp_CapNhatThongTinKhoa" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatThongTinKhoa" />
           <FunctionImportMapping FunctionImportName="sp_ThemMoiThongTinKhoa" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiThongTinKhoa" />
+          <FunctionImportMapping FunctionImportName="sp_CapNhatThongTinBM" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatThongTinBM" />
+          <FunctionImportMapping FunctionImportName="sp_ThemMoiThongTinBM" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiThongTinBM" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
