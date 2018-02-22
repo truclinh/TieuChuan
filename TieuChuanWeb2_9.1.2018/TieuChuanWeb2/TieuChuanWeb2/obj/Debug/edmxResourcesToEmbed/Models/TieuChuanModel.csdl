@@ -257,6 +257,16 @@
       <Parameter Name="nguoitao" Mode="In" Type="String" />
       <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="sp_CapNhatThongTinKhoa">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="tenkhoa" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemMoiThongTinKhoa">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="tenkhoa" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />

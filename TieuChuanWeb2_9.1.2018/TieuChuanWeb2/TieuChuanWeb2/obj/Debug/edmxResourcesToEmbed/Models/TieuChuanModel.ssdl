@@ -282,6 +282,11 @@
     <Parameter Name="nguoisua" Type="nvarchar" Mode="In" />
     <Parameter Name="ngaysua" Type="datetime" Mode="In" />
   </Function>
+  <Function Name="sp_CapNhatThongTinKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenkhoa" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_CapNhatTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
     <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
@@ -360,6 +365,11 @@
     <Parameter Name="ghichu" Type="nvarchar" Mode="In" />
     <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
     <Parameter Name="ngaytao" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemMoiThongTinKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenkhoa" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_ThemMoiTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="uniqueidentifier" Mode="In" />

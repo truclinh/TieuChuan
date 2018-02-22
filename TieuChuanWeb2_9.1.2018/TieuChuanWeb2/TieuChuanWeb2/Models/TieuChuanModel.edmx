@@ -287,6 +287,11 @@
           <Parameter Name="nguoisua" Type="nvarchar" Mode="In" />
           <Parameter Name="ngaysua" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="sp_CapNhatThongTinKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+          <Parameter Name="tenkhoa" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_CapNhatTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
@@ -365,6 +370,11 @@
           <Parameter Name="ghichu" Type="nvarchar" Mode="In" />
           <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
           <Parameter Name="ngaytao" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemMoiThongTinKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+          <Parameter Name="tenkhoa" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_ThemMoiTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
@@ -723,6 +733,16 @@
             <Parameter Name="ghichu" Mode="In" Type="String" />
             <Parameter Name="nguoitao" Mode="In" Type="String" />
             <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CapNhatThongTinKhoa">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="makhoa" Mode="In" Type="String" />
+            <Parameter Name="tenkhoa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemMoiThongTinKhoa">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="makhoa" Mode="In" Type="String" />
+            <Parameter Name="tenkhoa" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1225,6 +1245,8 @@
           <FunctionImportMapping FunctionImportName="sp_ThemMoiTieuChi" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiTieuChi" />
           <FunctionImportMapping FunctionImportName="sp_CapNhatQLNguoiDung" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatQLNguoiDung" />
           <FunctionImportMapping FunctionImportName="sp_ThemMoiQLNguoiDung" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiQLNguoiDung" />
+          <FunctionImportMapping FunctionImportName="sp_CapNhatThongTinKhoa" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatThongTinKhoa" />
+          <FunctionImportMapping FunctionImportName="sp_ThemMoiThongTinKhoa" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiThongTinKhoa" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

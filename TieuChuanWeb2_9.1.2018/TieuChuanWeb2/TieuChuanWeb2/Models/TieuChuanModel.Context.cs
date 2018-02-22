@@ -874,5 +874,39 @@ namespace TieuChuanWeb2.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiQLNguoiDung", idParameter, ma_nsdParameter, ten_nsdParameter, matkhauParameter, makhoaParameter, mabomonParameter, ma_nhomParameter, ghichuParameter, nguoitaoParameter, ngaytaoParameter);
         }
+    
+        public virtual int sp_CapNhatThongTinKhoa(Nullable<System.Guid> id, string makhoa, string tenkhoa)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
+    
+            var tenkhoaParameter = tenkhoa != null ?
+                new ObjectParameter("tenkhoa", tenkhoa) :
+                new ObjectParameter("tenkhoa", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatThongTinKhoa", idParameter, makhoaParameter, tenkhoaParameter);
+        }
+    
+        public virtual int sp_ThemMoiThongTinKhoa(Nullable<System.Guid> id, string makhoa, string tenkhoa)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
+    
+            var tenkhoaParameter = tenkhoa != null ?
+                new ObjectParameter("tenkhoa", tenkhoa) :
+                new ObjectParameter("tenkhoa", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiThongTinKhoa", idParameter, makhoaParameter, tenkhoaParameter);
+        }
     }
 }

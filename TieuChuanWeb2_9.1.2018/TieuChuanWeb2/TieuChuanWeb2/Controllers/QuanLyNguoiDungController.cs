@@ -164,7 +164,7 @@ namespace TieuChuanWeb2.Controllers
             ViewBag.DMBoMon1 = new SelectList(db1.dm_bomon.ToList().OrderBy(n => n.mabomon), "mabomon", "tenbomon");
 
             Guid id = System.Guid.NewGuid();
-            var model = db1.dm_tieuchi;
+          //  var model = db1.dm_tieuchi;
             if (ModelState.IsValid)
             {
                 try
