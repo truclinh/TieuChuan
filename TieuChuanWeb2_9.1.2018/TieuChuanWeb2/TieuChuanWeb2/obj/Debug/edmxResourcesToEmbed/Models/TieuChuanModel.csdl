@@ -233,6 +233,30 @@
       <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
       <Parameter Name="noidung" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_CapNhatQLNguoiDung">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+      <Parameter Name="ten_nsd" Mode="In" Type="String" />
+      <Parameter Name="matkhau" Mode="In" Type="String" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="mabomon" Mode="In" Type="String" />
+      <Parameter Name="ma_nhom" Mode="In" Type="String" />
+      <Parameter Name="ghichu" Mode="In" Type="String" />
+      <Parameter Name="nguoisua" Mode="In" Type="String" />
+      <Parameter Name="ngaysua" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemMoiQLNguoiDung">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="ma_nsd" Mode="In" Type="String" />
+      <Parameter Name="ten_nsd" Mode="In" Type="String" />
+      <Parameter Name="matkhau" Mode="In" Type="String" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="mabomon" Mode="In" Type="String" />
+      <Parameter Name="ma_nhom" Mode="In" Type="String" />
+      <Parameter Name="ghichu" Mode="In" Type="String" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />

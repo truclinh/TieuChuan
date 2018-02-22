@@ -62,8 +62,6 @@ namespace TieuChuanWeb2.Controllers
             string txtNoiDung = f["txt_noidung"].ToString();
             string txtMaTieuChuan = f["txt_ma_tieuchuan"].ToString();
             ViewBag.cboMaTieuChuan = new SelectList(db.dm_tieuchuan.ToList().OrderBy(n => n.ma_tieuchuan), "ma_tieuchuan", "ma_tieuchuan");
-            //ViewBag.cboMaTieuChuan = db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan).Select(i => new { TenTC = i.ten_tieuchuan, MaTC = i.ma_tieuchuan });
-            // ViewBag.cboMaTieuChuan = db.dm_tieuchuan.ToList().OrderBy(n => n.ten_tieuchuan).Select(i => new { TenTC = i.ten_tieuchuan, MaTC = i.ma_tieuchuan });
             var model = db.dm_tieuchi;
             if (ModelState.IsValid)
             {

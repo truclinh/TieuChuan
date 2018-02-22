@@ -21,7 +21,7 @@
     }
     function fncBtnThemClick() {
         //var x = document.getElementById("txtHiddenId_I").value;
-        var url = '@Url.Action("ThemMoi", "DanhMucTieuChuan")';
+        var url = '@Url.Action("ThemMoi", "DanhMucTieuChi")';
         window.open(url, "_blank", "toolbar=yes,top=10,left=150,right=150,width=970,height=670");
 
         //'Url.Action("ChinhSua","DanhMucTieuChuan", { new id= x } )';
@@ -29,7 +29,7 @@
     }
     function fncBtnSuaClick() {
         var x = document.getElementById("txtHiddenId_I").value;
-        var url = '@Url.Action("ChinhSua", "DanhMucTieuChuan")' + '?id=' + x;
+        var url = '@Url.Action("ChinhSua", "DanhMucTieuChi")' + '?id=' + x;
         window.open(url, "_blank", "toolbar=yes,top=10,left=150,right=150,width=970,height=670");
         //'Url.Action("ChinhSua","DanhMucTieuChuan", { new id= x } )';
         // alert(x);

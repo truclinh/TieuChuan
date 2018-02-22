@@ -270,6 +270,18 @@
     <Parameter Name="tungay" Type="datetime" Mode="In" />
     <Parameter Name="denngay" Type="datetime" Mode="In" />
   </Function>
+  <Function Name="sp_CapNhatQLNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="matkhau" Type="nvarchar" Mode="In" />
+    <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="mabomon" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+    <Parameter Name="ghichu" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoisua" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaysua" Type="datetime" Mode="In" />
+  </Function>
   <Function Name="sp_CapNhatTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
     <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
@@ -336,6 +348,18 @@
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemMoiQLNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="ten_nsd" Type="nvarchar" Mode="In" />
+    <Parameter Name="matkhau" Type="nvarchar" Mode="In" />
+    <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+    <Parameter Name="mabomon" Type="nvarchar" Mode="In" />
+    <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+    <Parameter Name="ghichu" Type="nvarchar" Mode="In" />
+    <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaytao" Type="datetime" Mode="In" />
   </Function>
   <Function Name="sp_ThemMoiTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="uniqueidentifier" Mode="In" />

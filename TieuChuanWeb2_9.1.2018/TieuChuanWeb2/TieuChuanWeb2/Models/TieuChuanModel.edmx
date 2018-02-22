@@ -275,6 +275,18 @@
           <Parameter Name="tungay" Type="datetime" Mode="In" />
           <Parameter Name="denngay" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="sp_CapNhatQLNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+          <Parameter Name="ten_nsd" Type="nvarchar" Mode="In" />
+          <Parameter Name="matkhau" Type="nvarchar" Mode="In" />
+          <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+          <Parameter Name="mabomon" Type="nvarchar" Mode="In" />
+          <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+          <Parameter Name="ghichu" Type="nvarchar" Mode="In" />
+          <Parameter Name="nguoisua" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngaysua" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="sp_CapNhatTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="ma_tieuchi" Type="nvarchar" Mode="In" />
@@ -341,6 +353,18 @@
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemMoiQLNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ma_nsd" Type="nvarchar" Mode="In" />
+          <Parameter Name="ten_nsd" Type="nvarchar" Mode="In" />
+          <Parameter Name="matkhau" Type="nvarchar" Mode="In" />
+          <Parameter Name="makhoa" Type="nvarchar" Mode="In" />
+          <Parameter Name="mabomon" Type="nvarchar" Mode="In" />
+          <Parameter Name="ma_nhom" Type="nvarchar" Mode="In" />
+          <Parameter Name="ghichu" Type="nvarchar" Mode="In" />
+          <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngaytao" Type="datetime" Mode="In" />
         </Function>
         <Function Name="sp_ThemMoiTieuChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
@@ -675,6 +699,30 @@
             <Parameter Name="nguoitao" Mode="In" Type="String" />
             <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
             <Parameter Name="noidung" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CapNhatQLNguoiDung">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="ma_nsd" Mode="In" Type="String" />
+            <Parameter Name="ten_nsd" Mode="In" Type="String" />
+            <Parameter Name="matkhau" Mode="In" Type="String" />
+            <Parameter Name="makhoa" Mode="In" Type="String" />
+            <Parameter Name="mabomon" Mode="In" Type="String" />
+            <Parameter Name="ma_nhom" Mode="In" Type="String" />
+            <Parameter Name="ghichu" Mode="In" Type="String" />
+            <Parameter Name="nguoisua" Mode="In" Type="String" />
+            <Parameter Name="ngaysua" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemMoiQLNguoiDung">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="ma_nsd" Mode="In" Type="String" />
+            <Parameter Name="ten_nsd" Mode="In" Type="String" />
+            <Parameter Name="matkhau" Mode="In" Type="String" />
+            <Parameter Name="makhoa" Mode="In" Type="String" />
+            <Parameter Name="mabomon" Mode="In" Type="String" />
+            <Parameter Name="ma_nhom" Mode="In" Type="String" />
+            <Parameter Name="ghichu" Mode="In" Type="String" />
+            <Parameter Name="nguoitao" Mode="In" Type="String" />
+            <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1175,6 +1223,8 @@
           <FunctionImportMapping FunctionImportName="sp_ThemMoiTieuChuan" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiTieuChuan" />
           <FunctionImportMapping FunctionImportName="sp_CapNhatTieuChi" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatTieuChi" />
           <FunctionImportMapping FunctionImportName="sp_ThemMoiTieuChi" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiTieuChi" />
+          <FunctionImportMapping FunctionImportName="sp_CapNhatQLNguoiDung" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatQLNguoiDung" />
+          <FunctionImportMapping FunctionImportName="sp_ThemMoiQLNguoiDung" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiQLNguoiDung" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

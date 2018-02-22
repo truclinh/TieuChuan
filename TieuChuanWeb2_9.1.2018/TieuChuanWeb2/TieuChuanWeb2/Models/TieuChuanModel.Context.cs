@@ -784,5 +784,95 @@ namespace TieuChuanWeb2.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiTieuChi", idParameter, ma_tieuchiParameter, ten_tieuchiParameter, ma_tieuchuanParameter, nguoitaoParameter, ngaytaoParameter, noidungParameter);
         }
+    
+        public virtual int sp_CapNhatQLNguoiDung(Nullable<System.Guid> id, string ma_nsd, string ten_nsd, string matkhau, string makhoa, string mabomon, string ma_nhom, string ghichu, string nguoisua, Nullable<System.DateTime> ngaysua)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var ma_nsdParameter = ma_nsd != null ?
+                new ObjectParameter("ma_nsd", ma_nsd) :
+                new ObjectParameter("ma_nsd", typeof(string));
+    
+            var ten_nsdParameter = ten_nsd != null ?
+                new ObjectParameter("ten_nsd", ten_nsd) :
+                new ObjectParameter("ten_nsd", typeof(string));
+    
+            var matkhauParameter = matkhau != null ?
+                new ObjectParameter("matkhau", matkhau) :
+                new ObjectParameter("matkhau", typeof(string));
+    
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
+    
+            var mabomonParameter = mabomon != null ?
+                new ObjectParameter("mabomon", mabomon) :
+                new ObjectParameter("mabomon", typeof(string));
+    
+            var ma_nhomParameter = ma_nhom != null ?
+                new ObjectParameter("ma_nhom", ma_nhom) :
+                new ObjectParameter("ma_nhom", typeof(string));
+    
+            var ghichuParameter = ghichu != null ?
+                new ObjectParameter("ghichu", ghichu) :
+                new ObjectParameter("ghichu", typeof(string));
+    
+            var nguoisuaParameter = nguoisua != null ?
+                new ObjectParameter("nguoisua", nguoisua) :
+                new ObjectParameter("nguoisua", typeof(string));
+    
+            var ngaysuaParameter = ngaysua.HasValue ?
+                new ObjectParameter("ngaysua", ngaysua) :
+                new ObjectParameter("ngaysua", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatQLNguoiDung", idParameter, ma_nsdParameter, ten_nsdParameter, matkhauParameter, makhoaParameter, mabomonParameter, ma_nhomParameter, ghichuParameter, nguoisuaParameter, ngaysuaParameter);
+        }
+    
+        public virtual int sp_ThemMoiQLNguoiDung(Nullable<System.Guid> id, string ma_nsd, string ten_nsd, string matkhau, string makhoa, string mabomon, string ma_nhom, string ghichu, string nguoitao, Nullable<System.DateTime> ngaytao)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var ma_nsdParameter = ma_nsd != null ?
+                new ObjectParameter("ma_nsd", ma_nsd) :
+                new ObjectParameter("ma_nsd", typeof(string));
+    
+            var ten_nsdParameter = ten_nsd != null ?
+                new ObjectParameter("ten_nsd", ten_nsd) :
+                new ObjectParameter("ten_nsd", typeof(string));
+    
+            var matkhauParameter = matkhau != null ?
+                new ObjectParameter("matkhau", matkhau) :
+                new ObjectParameter("matkhau", typeof(string));
+    
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
+    
+            var mabomonParameter = mabomon != null ?
+                new ObjectParameter("mabomon", mabomon) :
+                new ObjectParameter("mabomon", typeof(string));
+    
+            var ma_nhomParameter = ma_nhom != null ?
+                new ObjectParameter("ma_nhom", ma_nhom) :
+                new ObjectParameter("ma_nhom", typeof(string));
+    
+            var ghichuParameter = ghichu != null ?
+                new ObjectParameter("ghichu", ghichu) :
+                new ObjectParameter("ghichu", typeof(string));
+    
+            var nguoitaoParameter = nguoitao != null ?
+                new ObjectParameter("nguoitao", nguoitao) :
+                new ObjectParameter("nguoitao", typeof(string));
+    
+            var ngaytaoParameter = ngaytao.HasValue ?
+                new ObjectParameter("ngaytao", ngaytao) :
+                new ObjectParameter("ngaytao", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiQLNguoiDung", idParameter, ma_nsdParameter, ten_nsdParameter, matkhauParameter, makhoaParameter, mabomonParameter, ma_nhomParameter, ghichuParameter, nguoitaoParameter, ngaytaoParameter);
+        }
     }
 }
