@@ -83,6 +83,19 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CapNhatTieuChuan" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatTieuChuan" />
+    <FunctionImportMapping FunctionImportName="sp_ThemMoiTieuChuan" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiTieuChuan" />
+    <FunctionImportMapping FunctionImportName="sp_CapNhatTieuChi" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatTieuChi" />
+    <FunctionImportMapping FunctionImportName="sp_ThemMoiTieuChi" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiTieuChi" />
+    <FunctionImportMapping FunctionImportName="sp_CapNhatQLNguoiDung" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatQLNguoiDung" />
+    <FunctionImportMapping FunctionImportName="sp_ThemMoiQLNguoiDung" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiQLNguoiDung" />
+    <FunctionImportMapping FunctionImportName="sp_CapNhatThongTinKhoa" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatThongTinKhoa" />
+    <FunctionImportMapping FunctionImportName="sp_ThemMoiThongTinKhoa" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiThongTinKhoa" />
+    <FunctionImportMapping FunctionImportName="sp_CapNhatThongTinBM" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatThongTinBM" />
+    <FunctionImportMapping FunctionImportName="sp_ThemMoiThongTinBM" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiThongTinBM" />
+    <FunctionImportMapping FunctionImportName="sp_CapNhapDetail" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhapDetail" />
+    <FunctionImportMapping FunctionImportName="sp_CapNhapMaster" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhapMaster" />
+    <FunctionImportMapping FunctionImportName="sp_LayDuLieu" FunctionName="QL_TieuChuan2Model.Store.sp_LayDuLieu" />
     <EntitySetMapping Name="bang1_final">
       <EntityTypeMapping TypeName="QL_TieuChuan2Model.bang1_final">
         <MappingFragment StoreEntitySet="bang1_final">
@@ -174,10 +187,9 @@
     <EntitySetMapping Name="hs_taptinct">
       <EntityTypeMapping TypeName="QL_TieuChuan2Model.hs_taptinct">
         <MappingFragment StoreEntitySet="hs_taptinct">
-          <ScalarProperty Name="path2" ColumnName="path2" />
           <ScalarProperty Name="sott" ColumnName="sott" />
           <ScalarProperty Name="ghichu" ColumnName="ghichu" />
-          <ScalarProperty Name="path" ColumnName="path" />
+          <ScalarProperty Name="driveid" ColumnName="driveid" />
           <ScalarProperty Name="tinhtrang" ColumnName="tinhtrang" />
           <ScalarProperty Name="tentaptin" ColumnName="tentaptin" />
           <ScalarProperty Name="soid" ColumnName="soid" />
@@ -283,15 +295,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_CapNhatTieuChuan" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatTieuChuan" />
-    <FunctionImportMapping FunctionImportName="sp_ThemMoiTieuChuan" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiTieuChuan" />
-    <FunctionImportMapping FunctionImportName="sp_CapNhatTieuChi" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatTieuChi" />
-    <FunctionImportMapping FunctionImportName="sp_ThemMoiTieuChi" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiTieuChi" />
-    <FunctionImportMapping FunctionImportName="sp_CapNhatQLNguoiDung" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatQLNguoiDung" />
-    <FunctionImportMapping FunctionImportName="sp_ThemMoiQLNguoiDung" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiQLNguoiDung" />
-    <FunctionImportMapping FunctionImportName="sp_CapNhatThongTinKhoa" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatThongTinKhoa" />
-    <FunctionImportMapping FunctionImportName="sp_ThemMoiThongTinKhoa" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiThongTinKhoa" />
-    <FunctionImportMapping FunctionImportName="sp_CapNhatThongTinBM" FunctionName="QL_TieuChuan2Model.Store.sp_CapNhatThongTinBM" />
-    <FunctionImportMapping FunctionImportName="sp_ThemMoiThongTinBM" FunctionName="QL_TieuChuan2Model.Store.sp_ThemMoiThongTinBM" />
   </EntityContainerMapping>
 </Mapping>

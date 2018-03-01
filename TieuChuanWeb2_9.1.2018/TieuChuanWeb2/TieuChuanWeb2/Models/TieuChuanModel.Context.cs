@@ -958,5 +958,60 @@ namespace TieuChuanWeb2.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemMoiThongTinBM", idParameter, mabomonParameter, tenbomonParameter, makhoaParameter, googledriveParameter);
         }
+    
+        public virtual int sp_CapNhapDetail(Nullable<System.Guid> id, Nullable<System.Guid> soid, string tentaptin, string driveid, Nullable<int> sott)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var soidParameter = soid.HasValue ?
+                new ObjectParameter("soid", soid) :
+                new ObjectParameter("soid", typeof(System.Guid));
+    
+            var tentaptinParameter = tentaptin != null ?
+                new ObjectParameter("tentaptin", tentaptin) :
+                new ObjectParameter("tentaptin", typeof(string));
+    
+            var driveidParameter = driveid != null ?
+                new ObjectParameter("driveid", driveid) :
+                new ObjectParameter("driveid", typeof(string));
+    
+            var sottParameter = sott.HasValue ?
+                new ObjectParameter("sott", sott) :
+                new ObjectParameter("sott", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhapDetail", idParameter, soidParameter, tentaptinParameter, driveidParameter, sottParameter);
+        }
+    
+        public virtual int sp_CapNhapMaster(Nullable<System.Guid> soid, string dinhdanh, string ma_tieuchi, string nguoitao, Nullable<System.DateTime> ngaytao)
+        {
+            var soidParameter = soid.HasValue ?
+                new ObjectParameter("soid", soid) :
+                new ObjectParameter("soid", typeof(System.Guid));
+    
+            var dinhdanhParameter = dinhdanh != null ?
+                new ObjectParameter("dinhdanh", dinhdanh) :
+                new ObjectParameter("dinhdanh", typeof(string));
+    
+            var ma_tieuchiParameter = ma_tieuchi != null ?
+                new ObjectParameter("ma_tieuchi", ma_tieuchi) :
+                new ObjectParameter("ma_tieuchi", typeof(string));
+    
+            var nguoitaoParameter = nguoitao != null ?
+                new ObjectParameter("nguoitao", nguoitao) :
+                new ObjectParameter("nguoitao", typeof(string));
+    
+            var ngaytaoParameter = ngaytao.HasValue ?
+                new ObjectParameter("ngaytao", ngaytao) :
+                new ObjectParameter("ngaytao", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhapMaster", soidParameter, dinhdanhParameter, ma_tieuchiParameter, nguoitaoParameter, ngaytaoParameter);
+        }
+    
+        public virtual int sp_LayDuLieu()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_LayDuLieu");
+        }
     }
 }

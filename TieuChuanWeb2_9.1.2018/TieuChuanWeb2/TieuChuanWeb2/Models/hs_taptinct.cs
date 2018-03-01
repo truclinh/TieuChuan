@@ -18,9 +18,8 @@ namespace TieuChuanWeb2.Models
         public Nullable<System.Guid> soid { get; set; }
         public string tentaptin { get; set; }
         public string tinhtrang { get; set; }
-        public string path { get; set; }
+        public string driveid { get; set; }
         public string ghichu { get; set; }
         public Nullable<int> sott { get; set; }
-        public string path2 { get; set; }
     }
 }

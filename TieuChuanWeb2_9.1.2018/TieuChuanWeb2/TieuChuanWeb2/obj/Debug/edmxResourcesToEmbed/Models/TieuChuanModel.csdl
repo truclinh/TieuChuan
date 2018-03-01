@@ -184,21 +184,6 @@
     <FunctionImport Name="spPhanQuyenNguoiDung" ReturnType="Collection(QL_TieuChuan2Model.spPhanQuyenNguoiDung_Result)">
       <Parameter Name="ma_nsd" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="bang1_final" EntityType="QL_TieuChuan2Model.bang1_final" />
-    <EntitySet Name="dm_bomon" EntityType="QL_TieuChuan2Model.dm_bomon" />
-    <EntitySet Name="dm_dinhdanh" EntityType="QL_TieuChuan2Model.dm_dinhdanh" />
-    <EntitySet Name="dm_khoa" EntityType="QL_TieuChuan2Model.dm_khoa" />
-    <EntitySet Name="dm_tieuchi" EntityType="QL_TieuChuan2Model.dm_tieuchi" />
-    <EntitySet Name="dm_tieuchuan" EntityType="QL_TieuChuan2Model.dm_tieuchuan" />
-    <EntitySet Name="hs_noidung" EntityType="QL_TieuChuan2Model.hs_noidung" />
-    <EntitySet Name="hs_taptinct" EntityType="QL_TieuChuan2Model.hs_taptinct" />
-    <EntitySet Name="hs_tapting" EntityType="QL_TieuChuan2Model.hs_tapting" />
-    <EntitySet Name="ht_dm_form" EntityType="QL_TieuChuan2Model.ht_dm_form" />
-    <EntitySet Name="ht_dm_menu" EntityType="QL_TieuChuan2Model.ht_dm_menu" />
-    <EntitySet Name="ht_dm_nsd" EntityType="QL_TieuChuan2Model.ht_dm_nsd" />
-    <EntitySet Name="ht_nsd_form" EntityType="QL_TieuChuan2Model.ht_nsd_form" />
-    <EntitySet Name="ht_nsd_menu" EntityType="QL_TieuChuan2Model.ht_nsd_menu" />
-    <EntitySet Name="sysdiagrams" EntityType="QL_TieuChuan2Model.sysdiagrams" />
     <FunctionImport Name="sp_CapNhatTieuChuan">
       <Parameter Name="id" Mode="In" Type="Guid" />
       <Parameter Name="ma_tieuchuan" Mode="In" Type="String" />
@@ -281,6 +266,36 @@
       <Parameter Name="makhoa" Mode="In" Type="String" />
       <Parameter Name="googledrive" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_CapNhapDetail">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="soid" Mode="In" Type="Guid" />
+      <Parameter Name="tentaptin" Mode="In" Type="String" />
+      <Parameter Name="driveid" Mode="In" Type="String" />
+      <Parameter Name="sott" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CapNhapMaster">
+      <Parameter Name="soid" Mode="In" Type="Guid" />
+      <Parameter Name="dinhdanh" Mode="In" Type="String" />
+      <Parameter Name="ma_tieuchi" Mode="In" Type="String" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LayDuLieu" />
+    <EntitySet Name="bang1_final" EntityType="QL_TieuChuan2Model.bang1_final" />
+    <EntitySet Name="dm_bomon" EntityType="QL_TieuChuan2Model.dm_bomon" />
+    <EntitySet Name="dm_dinhdanh" EntityType="QL_TieuChuan2Model.dm_dinhdanh" />
+    <EntitySet Name="dm_khoa" EntityType="QL_TieuChuan2Model.dm_khoa" />
+    <EntitySet Name="dm_tieuchi" EntityType="QL_TieuChuan2Model.dm_tieuchi" />
+    <EntitySet Name="dm_tieuchuan" EntityType="QL_TieuChuan2Model.dm_tieuchuan" />
+    <EntitySet Name="hs_noidung" EntityType="QL_TieuChuan2Model.hs_noidung" />
+    <EntitySet Name="hs_taptinct" EntityType="QL_TieuChuan2Model.hs_taptinct" />
+    <EntitySet Name="hs_tapting" EntityType="QL_TieuChuan2Model.hs_tapting" />
+    <EntitySet Name="ht_dm_form" EntityType="QL_TieuChuan2Model.ht_dm_form" />
+    <EntitySet Name="ht_dm_menu" EntityType="QL_TieuChuan2Model.ht_dm_menu" />
+    <EntitySet Name="ht_dm_nsd" EntityType="QL_TieuChuan2Model.ht_dm_nsd" />
+    <EntitySet Name="ht_nsd_form" EntityType="QL_TieuChuan2Model.ht_nsd_form" />
+    <EntitySet Name="ht_nsd_menu" EntityType="QL_TieuChuan2Model.ht_nsd_menu" />
+    <EntitySet Name="sysdiagrams" EntityType="QL_TieuChuan2Model.sysdiagrams" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -390,12 +405,11 @@
     </Key>
     <Property Name="id" Type="Guid" Nullable="false" />
     <Property Name="soid" Type="Guid" />
-    <Property Name="tentaptin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tentaptin" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
     <Property Name="tinhtrang" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-    <Property Name="path" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="driveid" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
     <Property Name="ghichu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="sott" Type="Int32" />
-    <Property Name="path2" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="hs_tapting">
     <Key>

@@ -95,7 +95,7 @@
         i.Size = RibbonItemSize.Large;
         ((RibbonButtonItem)i).LargeImage.IconID = IconID.TasksTask32x32;
         ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/Images/VTAccounting/Works-in-progress-icon.png");
-        ((RibbonButtonItem)i).NavigateUrl = Url.Action("Index", "QuanLyDuLieu");
+        ((RibbonButtonItem)i).NavigateUrl = Url.Action("GetGoogleDriveFiles", "QuanLyDuLieu");
     });
     tasksGroupDanhMuc.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
