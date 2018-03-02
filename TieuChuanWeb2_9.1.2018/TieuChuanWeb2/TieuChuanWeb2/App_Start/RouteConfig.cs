@@ -14,7 +14,7 @@ namespace TieuChuanWeb2 {
             routes.MapRoute(
                 name: "Default", // Route name
                 url: "{controller}/{action}/{id}", // URL with parameters
-                defaults: new { controller = "DanhMucTieuChuan", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
         }
     }
