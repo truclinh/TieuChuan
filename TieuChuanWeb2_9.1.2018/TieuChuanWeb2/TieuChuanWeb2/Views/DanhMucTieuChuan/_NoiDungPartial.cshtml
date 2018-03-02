@@ -2,23 +2,22 @@
 <center>
     @*<script type="text/javascript">
         function fncBtnLuu1Click() {
-          //  var x = document.getElementById("NoiDung")[0].value;
-            //alert(x);
+            var x = document.getElementById("id");
+            NoiDung.commands.openInsertHyperlinkDialog.execute("Thái");
         }
         </script>*@
     @Html.Hidden("id", Model.id)
-    @*@Html.Hidden("ma_tieuchuan", Model.ma_tieuchuan)
-        @Html.Hidden("ten_tieuchuan", Model.ten_tieuchuan)*@
     @Html.DevExpress().RichEdit(settings =>
 {
     settings.Name = "NoiDung";
-    settings.CallbackRouteValues = new { Controller = "DanhMucTieuChuan", Action = "NoiDungPartial" };
+    //settings.CallbackRouteValues = new {Controller = "DanhMucTieuChuan", Action = "TestPartial",id=Model.id};
     settings.Width = Unit.Percentage(100);
     settings.Height = 610;
     settings.ReadOnly = false;
     settings.RibbonMode = RichEditRibbonMode.OneLineRibbon;
     settings.Settings.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
-    settings.ViewMergedData = true;
+    // settings.ViewMergedData = true;
+    //settings.= "function(s, e) { DXEventMonitor.Trace(s, e, 'GotFocus') }";
     settings.Init = (s, e) =>
     {
         var rich = s as MVCxRichEdit;
@@ -29,15 +28,6 @@
         //rich.RibbonTabs[4].Visible = false;
         //rich.RibbonTabs[5].Visible = false;
     };
-    //settings.Saving = (s, e) =>
-    //{
-    //    byte[] docBytes = RichEditExtension.SaveCopy("NoiDung", DevExpress.XtraRichEdit.DocumentFormat.Html);
-    //    //DXWebApplication1.Models.DataHelper.SaveDocument(docBytes);
-    //    settings.Saving = (s, e) => {
-    //    var doc = DevExpress.Web.Office.DocumentManager.FindDocument(e.DocumentID);
-    //    var arr = doc.SaveCopy();
-    //    //...
-    //};
     settings.Saving = (s, e) =>
     {
         var doc = DevExpress.Web.Office.DocumentManager.FindDocument("E://Link.txt");
@@ -88,7 +78,7 @@
            settings.Name = "btnLuu";
            settings.Text = "Lưu";
            settings.UseSubmitBehavior = true;
-           //settings.ClientSideEvents.Click = "fncBtnLuu1Click";
+          // settings.ClientSideEvents.Click = "fncBtnLuu1Click";
            settings.Images.Image.Url = Url.Content("~/Content/Images/TieuChuan/save.png");
            settings.ImagePosition = ImagePosition.Left;
        }).GetHtml()

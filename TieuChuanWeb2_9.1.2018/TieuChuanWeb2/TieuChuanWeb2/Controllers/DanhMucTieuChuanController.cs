@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using TieuChuanWeb2.Models;
 namespace TieuChuanWeb2.Controllers
@@ -45,12 +46,12 @@ namespace TieuChuanWeb2.Controllers
             //return RedirectToAction("DangNhap", "TaiKhoan");
         }
         //View Chỉnh sửa
-        public ActionResult ChinhSua(System.Guid id)
+        public ActionResult ChinhSua(System.Guid? id)
         {
             //if (Session["TaiKhoan"] != null)
             //{
-            // var da = db.dm_tieuchuan.SingleOrDefault(n => n.id == id);
-            return View();
+            var da = db.dm_tieuchuan.SingleOrDefault(n => n.id == id);
+            return View(da);
             //}
             //return RedirectToAction("DangNhap", "TaiKhoan");
         }
@@ -91,7 +92,7 @@ namespace TieuChuanWeb2.Controllers
                 {
                     db.sp_ThemMoiTieuChuan(id, txtMaTC, txtTenTC, "Linh", DateTime.Now, richEditString);
                     //model.Add(item);
-                   db.SaveChanges();
+                    db.SaveChanges();
                 }
                 catch (Exception e)
                 {
@@ -131,19 +132,25 @@ namespace TieuChuanWeb2.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-             return View("Index");
-           // return Content("<script type='text/javascript'>setInterval(function(){window.close();alert('Lưu thành công !!');window.opener.location.reload(true);},2000);</script>");
+            return View("Index");
+            // return Content("<script type='text/javascript'>setInterval(function(){window.close();alert('Lưu thành công !!');window.opener.location.reload(true);},2000);</script>");
         }
-        public ActionResult NoiDungPartial(System.Guid id)
+        public ActionResult NoiDungPartial(System.Guid? id)
         {
             var model = db.dm_tieuchuan;
             //var x = model.SingleOrDefault(n => n.id == new Guid("D4EF2CE0-72DE-49CD-8BC7-158CBB8CEB3F"));
-            var x = model.SingleOrDefault(n => n.id == (System.Guid)id);
+            var x = model.SingleOrDefault(n => n.id == id);
             // byte[] docBytes = RichEditExtension.SaveCopy("RichEditName", DevExpress.XtraRichEdit.DocumentFormat.Rtf);
             byte[] nd = Encoding.UTF8.GetBytes(x.noidung);
             x.noidungbyte = nd;
+            //var y = model.SingleOrDefault(n => n.id == (System.Guid)id);
             return PartialView("_NoiDungPartial", x);
         }
+        //public ActionResult TestPartial(System.Guid? id)
+        //{
+        //    return PartialView("TestPartial",y);
+        //}
+
         public ActionResult NoiDungThemMoiPartial()
         {
             var model = db.dm_tieuchuan;

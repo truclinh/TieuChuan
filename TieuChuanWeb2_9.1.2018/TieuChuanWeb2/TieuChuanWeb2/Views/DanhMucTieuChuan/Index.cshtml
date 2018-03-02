@@ -6,17 +6,11 @@
 }
 @*<p name="DetailNotes"></p>*@
 <script type="text/javascript">
-    //window.onunload = refreshParent;
-    //function refreshParent() {
-    //    window.opener.location.reload();
-    //}
     function OnGridFocusedRowChanged(s, e) {
         s.GetRowValues(s.GetFocusedRowIndex(), 'id;ma_tieuchuan;ten_tieuchuan', OnGetRowValues);
-        //alert("jhjh");
     }
     function OnGetRowValues(values) {
         txtHiddenId.SetText(values[0]);
-        //txt_ghichu.SetText(values[6]);
     }
     function fncBtnThemClick() {
         //var x = document.getElementById("txtHiddenId_I").value;
